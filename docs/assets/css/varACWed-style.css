@@ -91,5 +91,12 @@ main p {
   font-size: 1.1rem;
   margin-top: 1rem;
   color: #333;
+  text-align: left;
+}
+
+.divider {
+  height: 11px;
+  background-color: #ccc;
+  margin: 30px 0;
 }
 
