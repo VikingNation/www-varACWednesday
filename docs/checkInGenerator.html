@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VarAC Wednesday - Check-in template generator</title>
+  <link rel="stylesheet" href="assets/css/varACWed-style.css" />
+</head>
+<body>
+
+
+  <div id="header-placeholder"></div>
+
+  <header>
+    <img src="/assets/images/VarACWednesdayLogo-White.png" alt="VarAC Wednesday" width="300" height="auto" />
+    <p>Promoting digital comms excellence for all VarAC enthusiasts</p>
+  </header>
+
+  <div id="nav-placeholder"></div>
+  <script>
+     fetch('/navbar.html')
+     .then(res => res.text())
+     .then(data => {
+     document.getElementById('nav-placeholder').innerHTML = data;
+   });
+  </script>
+
+  <main>
+    <div id="templateGenerator" class="section">
+
+    <h2>VarAC Wednesday Check-In Generator</h2>
+
+    <p align="left">
+	Message templates help to stream line your check-in to VarAC Wednesday.  Use the following form to genrate a canned message template to add to VarAC.</br>
+
+	<table align="center">
+	<tr>
+	<td><label for="vCALLSIGN">Callsign:</label></td>
+	<td><input type="text" id="vCALLSIGN" placeholder="e.g., KB0US"></td>
+	</tr>
+
+	<tr>
+	<td><label for="vFIRSTNAME">First Name:</label></td>
+	<td><input type="text" id="vFIRSTNAME" placeholder="e.g., Mark"></td>
+	</tr>
+
+	<tr>
+	<td><label for="vCITY">City:</label></td>
+	<td><input type="text" id="vCITY" placeholder="e.g., Twin Falls"></td>
+	</tr>
+
+	<tr>
+	<td><label for="vCOUNTY">County (if appliciable):</label></td>
+	<td><input type="text" id="vCOUNTY" placeholder="e.g., Cassia"></td>
+	</tr>
+
+	<tr>
+	<td><label for="vSTATE_COUNTRY">State or Country:</label></td>
+	<td><input type="text" id="vSTATE_COUNTRY" placeholder="e.g., ID"></td>
+	</tr>
+
+	<tr>
+	<td><label for="vMODE">Mode:</label></td>
+	<td><input type="text" id="vMODE" placeholder="e.g., HF or VHF"></td>
+	</tr>
+
+	<tr>
+	<td><label for="vCARBONCOPY">Carbon Copy Email (optional):</label></td>
+	<td><input type="text" id="vCARBONCOPY" placeholder="e.g., youremail@example.com"></td>
+	</tr>
+
+    <tr>
+    <td colspan="2">
+	<button onclick="generateMessage()">GENERATE</button>
+    </td>
+    </tr>
+    </table>
+
+	<div id="outputContainer">
+	    <td><label for="generatedMessage">Generated Template:</label></td>
+	    <textarea id="generatedMessage" rows="5" readonly></textarea>
+	    <button onclick="copyToClipboard()">Copy template</button>
+	</div>
+
+    </p>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('footer.html')
+      .then(res => res.text())
+      .then(data => {
+      document.getElementById('footer-placeholder').innerHTML = data;
+      });
+    </script>
+
+
+    <script>
+
+    function isValidInternationalCallsign(input) {
+		  const value = input.trim().toUpperCase();
+
+		  // ITU standard: 1.2 letters (prefix), followed by 1 digit, followed by 1.3 letters (suffix)
+		  // Optional: country-specific suffixes like /P, /M, /MM, /QRP, etc.
+		  const fullPattern = /^[A-Z]{1,2}\d[A-Z]{1,3}(\/[A-Z0-9]{1,4})?$/;
+
+		  return fullPattern.test(value);
+    }
+    function sanitizeInput(inputElement) {
+		  const value = inputElement.value;
+
+		  // Regular expression to detect potential malicious code
+		  const maliciousPattern = /<[^>]*>|script|javascript:|on\w+=/gi;
+
+		  if (maliciousPattern.test(value)) {
+					  return false;
+					}
+
+		  // Optional: Enforce alphanumeric input with limited safe symbols
+		  const safePattern = /^[a-zA-Z0-9\s.,'-]*$/;
+		  if (!safePattern.test(value)) {
+					  return false;
+					}
+
+		  return true;
+	}
+
+	function generateMessage() {
+		const callsign = document.getElementById('vCALLSIGN').value;
+		const firstName = document.getElementById('vFIRSTNAME').value;
+		const city = document.getElementById('vCITY').value;
+		const county = document.getElementById('vCOUNTY').value;
+		const state_country = document.getElementById('vSTATE_COUNTRY').value;
+		const mode = document.getElementById('vMODE').value;
+		const carbonCopy = document.getElementById('vCARBONCOPY').value;
+
+		sanitizeError = false;
+	
+		if (!sanitizeInput(callsign)) {
+			alert("Invalid character in callsign.  Please correct");
+			sanitizeError = true;
+		}
+		
+		if(!isValidInternationalCallsign(callsign)) {
+		  alert("Please correct your callsign");
+		  sanitizeError = true;
+		}
+
+		if (!sanitizeInput(firstName)) {
+			alert("Invalid character in firt name.  Please correct");
+			sanitizeError = true;
+		}
+	
+		if (!sanitizeInput(city)) {
+				    alert("Invaid chracter in city.  Please correct");
+				    sanitizeError = true;
+		}
+
+		if (!sanitizeInput(county)) {
+				    alert("Invalid character in county.  Please correct");
+				    sanitizeError = true;
+		}
+
+		if (!sanitizeInput(state_country)) {
+				    alert("Invalid character in state/country.  Please correct");
+				    sanitizeError = true;
+		}
+
+	   	if (!sanitizeInput(mode)) {
+				    alert("Invalid character in mode.  Please correct");
+				    sanitizeError = true;
+		}
+
+		if (sanitizeError) {
+			return;
+		} else { 
+		const message = `<SM><TO:VARACWEDNESDAY@GMAIL.COM${carbonCopy ? ',' + carbonCopy : ''}><SBJ:VarAC Wednesday Check-In><MSG:${callsign}, ${firstName}, ${city}, ${county ? county + ', ' : ''}${state_country} (${mode})><EG>`;
+        	document.getElementById('generatedMessage').value = message;
+		}
+	  }
+
+    	function copyToClipboard() {
+	    	const textarea = document.getElementById('generatedMessage');
+		    textarea.select();
+		    document.execCommand('copy');
+		    alert("Copied to clipboard!");
+	    }
+
+    </script>
+
+</body>
+
+</body>
+</html>
+
