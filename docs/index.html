@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VarAC Wednesday</title>
+  <link rel="stylesheet" href="assets/css/varACWed-style.css" />
+</head>
+<body>
+
+  <header>
+    <img src="/assets/images/VarACWednesdayLogo.png" alt="VarAC Wednesday" width="300" height="auto" />
+    <p>Promoting digital comms excellence for all VarAC enthusiasts</p>
+  </header>
+
+  <div id="nav-placeholder"></div>
+  <script>
+     fetch('/navbar.html')
+     .then(res => res.text())
+     .then(data => {
+     document.getElementById('nav-placeholder').innerHTML = data;
+   });
+  </script>
+
+
+  <main>
+    <h2>Welcome to VARAC Wednesday!</h2>
+    <p>Explore training resources, last week's stats, and learn more about operating VarAC with confidence.</p>
+  </main>
+
+  <div id="footer-placeholder"></div>
+    <script>
+     fetch('footer.html')
+     .then(res => res.text())
+     .then(data => {
+     document.getElementById('footer-placeholder').innerHTML = data;
+   });
+</script>
+
+
+ 
+</body>
+</html>
+
