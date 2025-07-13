@@ -32,20 +32,71 @@
 
 
   <main>
-    <h2>Welcome to VARAC Wednesday!</h2>
-    <p>Explore training resources, last week's stats, and learn more about operating VarAC with confidence.</p>
+    <h2>Welcome to VarAC Wednesday!</h2>
+    <p>The weekly digital ham radio net using VarAC. Explore training resources, last week's stats, and learn more about operating VarAC with confidence.</p>
+
+    <h2>Join our next net!</h2>
+    <div id="netdate-placeholder" align="center"></div>
+
+
+    <div id="netMessage-placeholder"></div>
+    <p>See <a href="about.html#instructions">VarAC Wednesday Instructions</a> for directions on how to send messages this week.</p>
+
   </main>
 
   <div id="footer-placeholder"></div>
-    <script>
+
+
+  <script>
      fetch('footer.html')
      .then(res => res.text())
      .then(data => {
      document.getElementById('footer-placeholder').innerHTML = data;
-   });
-</script>
+     });
 
+    function getNextWednesday(date = new Date()) {
+      const currentDay = date.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+      const daysUntilWednesday = (3 - currentDay + 7) % 7 || 7;
+      const nextWednesday = new Date(date);
+      nextWednesday.setDate(date.getDate() + daysUntilWednesday);
+      console.log(nextWednesday);
+      return nextWednesday;
+    }
 
+    function getWeekOfMonth(date) {
+      // Clone the date to avoid modifying the original
+      const d = new Date(date);
+      
+      // Set date to first day of the month
+      d.setDate(1);
+      
+      // Get the day of week of the 1st (0 = Sunday, 1 = Monday, ...)
+      const startDay = d.getDay();
+
+      // Calculate adjusted date offset from start of the week
+      const dayOffset = date.getDate() + startDay - 1;
+
+      // Calculate week number (1-based)
+      return Math.floor(dayOffset / 7) + 1;
+    }
+
+    const nextWednesday = getNextWednesday();
+    const weekInMonth = getWeekOfMonth(nextWednesday);
+    messageRequested = "";
+    if (weekInMonth === 1) {
+        messageRequested = "This is the first week of the month. A standard check-in is requested with the option of including a weather report.";
+    }
+
+    if (weekInMonth === 3) { 
+        messageRequested = "This is the third week of the month.  A standard check-in is requested with the option of also checking-in via optional ICS-213 message.";
+    } else {
+        messageRequested = "Please send a standard check-in message this week.";
+    }
+
+    document.getElementById('netdate-placeholder').innerHTML = `<p>Join our next net on ${nextWednesday.toDateString()}.</p>`;
+    document.getElementById('netMessage-placeholder').innerHTML = `<p>${messageRequested}</p>`;
+
+   </script>
  
 </body>
 </html>
