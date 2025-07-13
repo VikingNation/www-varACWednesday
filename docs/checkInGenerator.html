@@ -31,7 +31,7 @@
     <h2>VarAC Wednesday Check-In Generator</h2>
 
     <p align="left">
-	Message templates help to stream line your check-in to VarAC Wednesday.  Use the following form to genrate a canned message template to add to VarAC.</br>
+	Message templates help to stream line your check-in to VarAC Wednesday.  Use the following form to generate a canned message template to add to VarAC.</br>
 
 	<table align="center">
 	<tr>
@@ -96,6 +96,11 @@
 
 
     <script>
+    
+    function isValidEmail(email) {
+      const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return pattern.test(email);
+    }
 
     function isValidInternationalCallsign(input) {
 		  const value = input.trim().toUpperCase();
@@ -126,7 +131,7 @@
 	}
 
 	function generateMessage() {
-		const callsign = document.getElementById('vCALLSIGN').value;
+		const callsign = document.getElementById('vCALLSIGN').value.toUpperCase();
 		const firstName = document.getElementById('vFIRSTNAME').value;
 		const city = document.getElementById('vCITY').value;
 		const county = document.getElementById('vCOUNTY').value;
@@ -137,44 +142,51 @@
 		sanitizeError = false;
 	
 		if (!sanitizeInput(callsign)) {
-			alert("Invalid character in callsign.  Please correct");
+			alert("Invalid character in callsign. Please correct");
 			sanitizeError = true;
 		}
 		
 		if(!isValidInternationalCallsign(callsign)) {
-		  alert("Please correct your callsign");
+		  alert("Invalid callsign. Please correct");
 		  sanitizeError = true;
 		}
 
 		if (!sanitizeInput(firstName)) {
-			alert("Invalid character in firt name.  Please correct");
+			alert("Invalid character in first name. Please correct");
 			sanitizeError = true;
 		}
 	
 		if (!sanitizeInput(city)) {
-				    alert("Invaid chracter in city.  Please correct");
+				    alert("Invaid chracter in city. Please correct");
 				    sanitizeError = true;
 		}
 
 		if (!sanitizeInput(county)) {
-				    alert("Invalid character in county.  Please correct");
+				    alert("Invalid character in county. Please correct");
 				    sanitizeError = true;
 		}
 
 		if (!sanitizeInput(state_country)) {
-				    alert("Invalid character in state/country.  Please correct");
+				    alert("Invalid character in state/country. Please correct");
 				    sanitizeError = true;
 		}
 
 	   	if (!sanitizeInput(mode)) {
-				    alert("Invalid character in mode.  Please correct");
+				    alert("Invalid character in mode. Please correct");
 				    sanitizeError = true;
 		}
+
+        const invalidEmail = carbonCopy ? !isValidEmail(carbonCopy) : false;
+
+        if (invalidEmail) {
+                alert("Invalid email. Please corrrect");
+                sanitizeError = true;
+        }
 
 		if (sanitizeError) {
 			return;
 		} else { 
-		const message = `<SM><TO:VARACWEDNESDAY@GMAIL.COM${carbonCopy ? ',' + carbonCopy : ''}><SBJ:VarAC Wednesday Check-In><MSG:${callsign}, ${firstName}, ${city}, ${county ? county + ', ' : ''}${state_country} (${mode})><EG>`;
+		    const message = `<SM><TO:VARACWEDNESDAY@GMAIL.COM${carbonCopy ? ',' + carbonCopy : ''}><SBJ:VarAC Wednesday Check-In><MSG:${callsign}, ${firstName}, ${city}, ${county ? county + ', ' : ''}${state_country} (${mode})><EG>`;
         	document.getElementById('generatedMessage').value = message;
 		}
 	  }
@@ -187,9 +199,6 @@
 	    }
 
     </script>
-
-</body>
-
 </body>
 </html>
 
