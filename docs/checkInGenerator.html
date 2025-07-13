@@ -186,7 +186,7 @@
 		if (sanitizeError) {
 			return;
 		} else { 
-		    const message = `<SM><TO:VARACWEDNESDAY@GMAIL.COM${carbonCopy ? ',' + carbonCopy : ''}><SBJ:VarAC Wednesday Check-In><MSG:${callsign}, ${firstName}, ${city}, ${county ? county + ', ' : ''}${state_country} (${mode})><EG>`;
+		    const message = `<EM:VARACWEDNESDAY@GMAIL.COM${carbonCopy ? ',' + carbonCopy : ''}><SBJ:VarAC Wednesday Check-In>${callsign}, ${firstName}, ${city}, ${county ? county + ', ' : ''}${state_country} (${mode})`;
         	document.getElementById('generatedMessage').value = message;
 		}
 	  }
