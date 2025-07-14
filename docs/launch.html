@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VarAC Wednesday - Launch announcement</title>
+    <link rel="stylesheet" href="assets/css/varACWed-style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/site.webmanifest">
+
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8B54HBJ66J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8B54HBJ66J');
+  </script>
+
+  <body>
+    <header>
+      <img src="/assets/images/VarACWednesdayLogo-White.png" alt="VarAC Wednesday" width="300" height="auto" />
+      <p>Promoting digital comms excellence for all VarAC enthusiasts</p>
+    </header>
+
+    <div id="nav-placeholder"></div>
+    <script>
+      fetch('/navbar.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+              });
+    </script>
+
+
+    <main>
+      <section>
+        <h2>&#128227; VarACWednesday.net is LIVE! &#128640;</h2>
+        <p>Your go-to portal for everything related to the <strong>VarAC Wednesday Net</strong> just launched, and it's loaded with helpful features for new and experienced operators alike!</p>
+
+        <h3 align="left">&#128736; What’s Inside:</h3>
+        <ul style="list-style: none;" align="left">
+          <li>&#9989; <strong>Online Check-In Template Generator</strong><br>&mdash; Just select your net type and go! Auto-formatted for accuracy.</li>
+          <li>&#128203; <strong>How-To Instructions</strong><br>&mdash; Step-by-step guidance on joining the weekly net. Perfect for newcomers!</li>
+          <li>&#127891; <strong>Training Materials</strong><br>&mdash; PDFs &amp; videos to help sharpen your VarAC chops &#128218;&#127909;</li>
+          <li>&#128202; <strong>Results Archive</strong><br>&mdash; Check-in logs, relay station details, and net history from previous weeks.</li>
+          <li>&#128197; <strong>Auto-updated Net Info</strong><br>&mdash; No manual tweaking needed! The site always knows the next net date &amp; format.</li>
+        </ul>
+
+        <p>&#128279; <strong>Check it out:</strong> <a href="https://www.varacwednesday.net" target="_blank" rel="noopener">www.VarACWednesday.net</a></p>
+
+        <p>Spread the word, get involved, and help build a stronger digital net community! &#128075;&#128172;&#128225;<br>
+        <em>#VarACWednesday #HamRadio #DigitalModes #NetCheckIn</em></p>
+        </br>
+        <p align="left">Jason Johnson - K3JSJ</br>Mark Rosneck - KB0US</br></p>
+      </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('footer.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+              });
+    </script>
+  </body>
+</html>
+
