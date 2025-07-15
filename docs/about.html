@@ -1,176 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VarAC Wednesday - About</title>
-  <link rel="stylesheet" href="assets/css/varACWed-style.css" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
-  <link rel="manifest" href="/assets/images/site.webmanifest">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VarAC Wednesday - About</title>
+    <link rel="stylesheet" href="assets/css/varACWed-style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/site.webmanifest">
 
-</head>
+  </head>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8B54HBJ66J"></script>
-<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-	  gtag('config', 'G-8B54HBJ66J');
-</script>
-
-<body>
-
-
-  <div id="header-placeholder"></div>
-
-  <header>
-    <img src="/assets/images/VarACWednesdayLogo-White.png" alt="VarAC Wednesday" width="300" height="auto" />
-    <p>Promoting digital comms excellence for all VarAC enthusiasts</p>
-  </header>
-
-  <div id="nav-placeholder"></div>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8B54HBJ66J"></script>
   <script>
-     fetch('/navbar.html')
-     .then(res => res.text())
-     .then(data => {
-     document.getElementById('nav-placeholder').innerHTML = data;
-   });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8B54HBJ66J');
   </script>
 
-  <main>
-    <div id="background" class="section">
-    <h2>What is VarAC Wednesday?</h2>
-    <p>VarAC Wednesday is a weekly amateur radio digital net where users check-in by sending a message via a station providing EMAIL gateway service.</p>
-
-    <h2>How do I check-in to VarAC Wednesday?</h2>
-    <p>Please see our <a href="about.html#instructions">instructions</a> for a full walk thru.</p>
-
-    <h2>What is the relationship to Winlink Wednesday?</h2>
-    <p>VarAC Wednesday has no connection or relationship with the original Winlink Wednesday or any other organization who conduct Winlink testing. VarAC Wednesday uses the same message format as Winlink Wednesday.sWe encourage operators to participate in both weekly digital nets.</p>
-    <h2>Where can I learn more about Winlink Wednesday?</h2>
-    <p>You can learn more about it on the <a href="https://winlinkwednesday.net/" class="new-tab">Winlink Wednesday website</a>.</p>
-   </div>
-
-   <div class="divider"></div>
-
-   <div id="instructions" class="section">
-   <h2>How do I compose the check-in message?</h2>
-   <p>Open VarAC and click the VMAIL button. Click the "Send as email" check-box. Type "varacwednesday@gmail.com" in the "To" line. Add a comma and type an email address to receive a copy. The copy is used to verify your VMAIL was delivered from the VarAC gateway to the Internet. Next, type a reply to address. Fill out the subject line and message portion based upon what is required for the given check-in week.</p>
-
-   <p>The following is an example standard check-in message</p>
-
-   <img src="/assets/images/VMAIL_compose_ex1.png" alt="Example check-in message" width="auto" height="auto" />
-
-   <p>Once you have reviewed your message to verify it is correct click the "SEND" button to place the message in your Outbox</p>
-
-   <h2>What do I use in subject and message body?</h2>
-   <p>Subject: VarAC Wednesday Check-In</br>Message body: call sign, first name, city or town, country, state, (HF or VHF, etc.)</br></br>
-   EXAMPLE 1:</br>
-   </br>
-   WA8YNQ, Mark, Cincinnati, Hamilton, OH (HF)</br>
-   </br>
-   EXAMPLE 2:</br>
-   </br>
-   ZS1OSS, Daniel, Cape Town, South Africa (VHF)</br>
-   </p>
-   </div>
-
-    <h2>How can canned templates be used to speed up your check-in?</h2>
-    <p>VarAC's canned messages can be used to automate VMAIL message composition. Use our <a href="checkInGenerator.html">check-in generator tool</a> to generate a tailored canned message, containing your information, which can be used to check-in to the VarAC Wednesday net. Check out the <a href="training.html">training section</a> for instructions on how to use the check-in generator and using the message in VarAC.</p>
-
-   <h2>First week of month optional message</h2>
-   <p>On the <b>first</b> Wednesday of the month a weather report is requested, but <u>not required</u>. The emphasis is on brevity and communicating the information rather than applying a strict format. Please include your weather report on the line <b>below your check-in</b>.
-
-   </br></br>
-   EXAMPLE 1: At 0934 local time, it is clear, sunny and 51°F. Winds are out of the NE at 10 mph.</br></br> 
-   To: varacwednesday@gmail.com</br>
-   Subject: VarAC Wednesday Check-In</br> 
-   Message body:  </br>
-   KB0US, Twin Falls, ID, (HF) </br> 
-   0934L, Clear, Sunny, 10mph NE, 51F </br></br>
-   EXAMPLE 2: At 1317 UTC, it is overcast with light rain, 10°C, wind from the SW at 5 km/h </br></br>
-   To: varacwednesday@gmail.com </br>
-   Subject: VarAC Wednesday Check-In</br> 
-   Message body:  </br>
-   VE3XYZ, John, Toronto, Canada</br>  
-   1317Z, overcast, light rain, 5 km/h SW,10C </br>
-   </br></br>
-
-   <h2>Third week of month optional message</h2>
-   <p>On the <b>third</b> Wednesday of the month an ICS-213 report is requested, but <u>not required</u>. A detailed walk-thru will be posted soon</p> 
-
-   <h2>Sending your message through an Email Gateway</h2>
-   <p align="left">You will need to send your check-in through a VarAC station that provides email gateway service.
-
-   <ul align="left">
-   <li>Identify a clear slot to pass your email to a beacon. Using the Slot Sniffer in the CALL CQ menu is probably easiest although some will just look at their panadapter.</li>
-   <li>Return to calling frequency.</li>
-   <li>Connect to a beacon displaying the Email Gateway <img src="assets/images/email_gateway_icon.png" alt="icon"> icon.</li>
-   <li>Send a QSY request to the beacon for the slot you identified as open.</li>
-   <li>You and the beacon both automatically move to the open slot.</li>
-   <li>The email is automatically transferred.</li>
-   <li>Disconnect when the email is transferred.</li>
-   </ul>
-
-   </br>
-   <p align="left">The entire process should look like this:</p>
-
-   <p>
-   <img src="/assets/images/Example_VMAIL_delivery.png" alt="example VMAIL delivery" />
-   </p>
-
-   <p align="left">
-   VarAC will likely display a number of information pop-ups that will clear themselves 
-   automatically. You do not need to manually clear these. In fact, if both you and the beacon are set up 
-   correctly, you should not have to touch the keyboard after sending the QSY request; everything should 
-   continue automatically up until you need to click DISCONNECT or send a <DISC> to the beacon.
-   </p>
-
-   <h2>When do I send my check-in message?</h2>
-   <p align="left">Send your email every Wednesday between 0000 and 2400 your local time.</p>
-
-   <h2>Additional information</h2>
-   <ul align="left">
-	   <li>Check-ins who do not use a VarAC EMAIL GATEWAY will not be counted.</li>
-	   <li>You must be at on at least V11.0.7</li>
-	   <li>YOU DO NOT NEED AN EMAIL GATEWAY ON YOUR INSTALLATION OF VarAC TO CHECK IN!  You will be using the EMAIL GATEWAY of the beacon displaying the email gateway icon that 
-		   you connect with.</li>
-	   <li>In V11.2.0 and above, canned messages are available in the VMAIL dialog box making 
-	   participation in VarAC Wednesday even easier!
+  <body>
 
 
-You must be on V11.0.7 or greater.
-	  Ÿ YOU DO NOT NEED AN EMAIL GATEWAY ON YOUR INSTALLATION OF VarAC TO 
-	  CHECK IN! You will be using the EMAIL GATEWAY of the beacon displaying the   icon that 
-	  you connect with.
-	   Ÿ In V11.2.0 and above, canned messages are available in the VMAIL dialog box making 
-	   participation in VarAC Wednesday even easier!
+    <div id="header-placeholder"></div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-   // Select all links with class 'new-tab'
-     document.querySelectorAll('a.new-tab').forEach(function(link) {
-       link.addEventListener('click', function (e) {
-         e.preventDefault();
-         window.open(link.href, '_blank');
-       });
-     });
-   });
-   
-</script>
+    <header>
+      <img src="/assets/images/VarACWednesdayLogo-White.png" alt="VarAC Wednesday" width="300" height="auto" />
+      <p>Promoting digital comms excellence for all VarAC enthusiasts</p>
+    </header>
 
-  </main>
-  <div id="footer-placeholder"></div>
-   <script>
-     fetch('footer.html')
-     .then(res => res.text())
-     .then(data => {
-     document.getElementById('footer-placeholder').innerHTML = data;
-   });
-</script>
+    <div id="nav-placeholder"></div>
+    <script>
+      fetch('/navbar.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+              });
+    </script>
 
-</body>
+    <main>
+      <div id="background" class="section">
+        <h2>What is VarAC Wednesday?</h2>
+        <p>VarAC Wednesday is a weekly amateur radio digital net where users check-in by sending a message via a station providing EMAIL gateway service.</p>
+
+        <h2>How do I check-in to VarAC Wednesday?</h2>
+        <p>Please see our <a href="about.html#instructions">instructions</a> for a full walk thru.</p>
+
+        <h2>What is the relationship to Winlink Wednesday?</h2>
+        <p>VarAC Wednesday has no connection or relationship with the original Winlink Wednesday or any other organization who conduct Winlink testing. VarAC Wednesday uses the same message format as Winlink Wednesday.sWe encourage operators to participate in both weekly digital nets.</p>
+        <h2>Where can I learn more about Winlink Wednesday?</h2>
+        <p>You can learn more about it on the <a href="https://winlinkwednesday.net/" class="new-tab">Winlink Wednesday website</a>.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div id="instructions" class="section">
+        <h2>How do I compose the check-in message?</h2>
+        <p>Open VarAC and click the VMAIL button. Click the "Send as email" check-box. Type "varacwednesday@gmail.com" in the "To" line. Add a comma and type an email address to receive a copy. The copy is used to verify your VMAIL was delivered from the VarAC gateway to the Internet. Next, type a reply to address. Fill out the subject line and message portion based upon what is required for the given check-in week.</p>
+
+        <p>The following is an example standard check-in message</p>
+
+        <img src="/assets/images/VMAIL_compose_ex1.png" alt="Example check-in message" width="auto" height="auto" />
+
+        <p>Once you have reviewed your message to verify it is correct click the "SEND" button to place the message in your Outbox</p>
+
+        <h2>What do I use in subject and message body?</h2>
+        <p>Subject: VarAC Wednesday Check-In</br>Message body: call sign, first name, city or town, country, state, (HF or VHF, etc.)</br></br>
+        EXAMPLE 1:</br>
+        </br>
+        WA8YNQ, Mark, Cincinnati, Hamilton, OH (HF)</br>
+        </br>
+        EXAMPLE 2:</br>
+        </br>
+        ZS1OSS, Daniel, Cape Town, South Africa (VHF)</br>
+        </p>
+      </div>
+
+      <h2>How can canned templates be used to speed up your check-in?</h2>
+      <p>VarAC's canned messages can be used to automate VMAIL message composition. Use our <a href="checkInGenerator.html">check-in generator tool</a> to generate a tailored canned message, containing your information, which can be used to check-in to the VarAC Wednesday net. Check out the <a href="training.html">training section</a> for instructions on how to use the check-in generator and using the message in VarAC.</p>
+
+      <h2>First week of month optional message</h2>
+      <p>On the <b>first</b> Wednesday of the month a weather report is requested, but <u>not required</u>. The emphasis is on brevity and communicating the information rather than applying a strict format. Please include your weather report on the line <b>below your check-in</b>.
+
+      </br></br>
+      EXAMPLE 1: At 0934 local time, it is clear, sunny and 51°F. Winds are out of the NE at 10 mph.</br></br> 
+      To: varacwednesday@gmail.com</br>
+      Subject: VarAC Wednesday Check-In</br> 
+      Message body:  </br>
+      KB0US, Twin Falls, ID, (HF) </br> 
+      0934L, Clear, Sunny, 10mph NE, 51F </br></br>
+      EXAMPLE 2: At 1317 UTC, it is overcast with light rain, 10°C, wind from the SW at 5 km/h </br></br>
+      To: varacwednesday@gmail.com </br>
+      Subject: VarAC Wednesday Check-In</br> 
+      Message body:  </br>
+      VE3XYZ, John, Toronto, Canada</br>  
+      1317Z, overcast, light rain, 5 km/h SW,10C </br>
+      </br></br>
+
+      <h2>Third week of month optional message</h2>
+      <p>On the <b>third</b> Wednesday of the month an ICS-213 report is requested, but <u>not required</u>.</p>
+      <p> Incident Command System (ICS) forms were developed by FEMA (the U.S. Federal 
+      Emergency Management Agency) and are designed to facilitate structured communication 
+      during disaster response, exercises, or other coordinated efforts. The most commonly used 
+      ICS form in Winlink is the ICS-213, a general message form for transmitting formal 
+      messages between agencies or operators.
+      In Winklink Express, these are HTML forms which are filled out in a browser that is then 
+      transferred to a Winlink Express email as text for sending. We don't have the HTML form, 
+      BUT we do have the text form as a TEMPLATE in the SEND VMAIL dialog box . but only in 
+      EMCOMM mode.
+      For those wishing to practice sending ICS forms using VarAC, VarAC Wednesday gives you 
+      an opportunity to do so.</p>
+
+      <img src="assets/images/ICS-213-dialog.png"/>
+
+
+      <p>Below is an example of the text on filling on an ICS-213 to send as a VMAIL in VarAC</p>
+      <ul style="list-style-type: none; padding-left : 0; padding: 10px; border: 2px solid #333; background-color: #f9f9f9; " align="left">
+        <li>1. INCIDENT NAME: VarAC Wednesday</li>
+        <li></br></li>
+        <li>2. TO/Position: KB0US, Net Control</li>
+        <li>3. FROM/Position: WA8YNQ, Participant</li>
+        <li>4. SUBJECT: VarAC Wednesday Check-in</li>
+        <li>5. DATE: %date%</li>
+        <li>6. TIME: %time</li>
+        <li>7. MESSAGE:</br>
+          WA8YNQ, Mark, Cincinnati, Ohio (HF)</li>
+        <li>8. APPROVED BY</br><li>
+            <li>&gt; Name / Position: Mark Rosneck, Net Participant</li>
+            <li></br></li>
+            <li>9. REPLY:</li>
+            <li></br></li>
+            <li>10. REPLIED BY</li>
+            <li>&gt; Name/Position: </li>
+            <li>&gt; Date/Time:<li>
+      </ul>
+      <p>There are actually a number of ways to produce the ICS-213 message including
+
+      <ul align="left">
+        <li>Fill out the form in EmComm mode, change the subject to &quot;VarAC Wednesday Check-in&quot;, press 
+          send to put the message in the Outbox, and connect to a beacon in EmComm mode to 
+          experience the entire emergency message system.</li>
+        <li>Fill out the form in EmComm mode, press send to put the message in the Outbox, change the 
+          mode to Advanced, and connect to a beacon station. This avoids any concerns of sending 
+          traffic in EmComm mode which, while it is a drill, is certainly not emergency traffic.i</li>
+        <li>If you are also participating in Winlink Wednesday, you could fill in the form on Winlink Express 
+          and copy it into a regular VarAC email.</li>
+        <li>You could create a prefilled form as a canned message (now available in V11.2.0 in the VMAIL 
+          dialog box) and then manually change the time and date. <i>An ICS-213 canned message generator comming soon!</i></li>
+      </ul>
+      </p>
+
+      <h2>Sending your message through an Email Gateway</h2>
+      <p align="left">You will need to send your check-in through a VarAC station that provides email gateway service.
+
+      <ul align="left">
+        <li>Identify a clear slot to pass your email to a beacon. Using the Slot Sniffer in the CALL CQ menu is probably easiest although some will just look at their panadapter.</li>
+        <li>Return to calling frequency.</li>
+        <li>Connect to a beacon displaying the Email Gateway <img src="assets/images/email_gateway_icon.png" alt="icon"> icon.</li>
+        <li>Send a QSY request to the beacon for the slot you identified as open.</li>
+        <li>You and the beacon both automatically move to the open slot.</li>
+        <li>The email is automatically transferred.</li>
+        <li>Disconnect when the email is transferred.</li>
+      </ul>
+
+      </br>
+      <p align="left">The entire process should look like this:</p>
+
+      <p>
+      <img src="/assets/images/Example_VMAIL_delivery.png" alt="example VMAIL delivery" />
+      </p>
+
+      <p align="left">
+      VarAC will likely display a number of information pop-ups that will clear themselves 
+      automatically. You do not need to manually clear these. In fact, if both you and the beacon are set up 
+      correctly, you should not have to touch the keyboard after sending the QSY request; everything should 
+      continue automatically up until you need to click DISCONNECT or send a <DISC> to the beacon.
+      </p>
+
+      <h2>When do I send my check-in message?</h2>
+      <p align="left">Send your email every Wednesday between 0000 and 2400 your local time.</p>
+
+      <h2>Additional information</h2>
+      <ul align="left">
+        <li>Check-ins who do not use a VarAC EMAIL GATEWAY will not be counted.</li>
+        <li>You must be at on at least V11.0.7</li>
+        <li>YOU DO NOT NEED AN EMAIL GATEWAY ON YOUR INSTALLATION OF VarAC TO CHECK IN!  You will be using the EMAIL GATEWAY of the beacon displaying the email gateway icon that 
+          you connect with.</li>
+        <li>In V11.2.0 and above, canned messages are available in the VMAIL dialog box making 
+          participation in VarAC Wednesday even easier!
+
+
+          You must be on V11.0.7 or greater.
+          <li>YOU DO NOT NEED AN EMAIL GATEWAY ON YOUR INSTALLATION OF VarAC TO CHECK IN! You will be using the EMAIL GATEWAY of the beacon displaying the icon that you connect with.</li>
+          <li>In V11.2.0 and above, canned messages are available in the VMAIL dialog box making participation in VarAC Wednesday even easier!</li>
+      </ul>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+                  // Select all links with class 'new-tab'
+                  document.querySelectorAll('a.new-tab').forEach(function(link) {
+                            link.addEventListener('click', function (e) {
+                                      e.preventDefault();
+                                      window.open(link.href, '_blank');
+                                    });
+                          });
+                });
+
+      </script>
+
+    </main>
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('footer.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+              });
+    </script>
+
+  </body>
 </html>
 
