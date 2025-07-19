@@ -1,0 +1,19 @@
+Updates to 7/16/2025
+
+Add
+
+NC3Z VIA N8EMA  (in spam folder)
+WC2F VIA KE4ZV  (Grok missed this)
+G1AW VIA OZ9EEE (Grok missed this gateway report)
+
+Added gateway
+OZ9EEE
+N8EMA
+
+Update gateway count
+KE4ZV
+
+Update country stats
+
++2 to United States
+
