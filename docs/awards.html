@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VarAC Wednesday - Awards</title>
+    <link rel="stylesheet" href="assets/css/varACWed-style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/site.webmanifest">
+
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8B54HBJ66J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8B54HBJ66J');
+  </script>
+
+  <body>
+    <header>
+      <img src="/assets/images/VarACWednesdayLogo-White.png" alt="VarAC Wednesday" width="300" height="auto" />
+      <p>Promoting digital comms excellence for all VarAC enthusiasts</p>
+    </header>
+
+    <div id="nav-placeholder"></div>
+    <script>
+      fetch('/navbar.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+              });
+    </script>
+
+
+    <main>
+      <h2>🎉 Announcing the VarAC Pioneer Award 🏅</h2>
+
+      <p>The VarAC Wednesday team is proud to introduce the <strong>VarAC Pioneer Award</strong>&mdash;a mark of dedication, perseverance, and passion for digital comms excellence.</p>
+
+      <h3 align="left">&#128246; Award Criteria</h3>
+      <p>Any operator who completes <strong>at least 20 weekly VarAC Wednesday check-ins</strong> during the <strong>inaugural 2025 year</strong> will be recognized as a <em>VarAC Pioneer</em>. This award celebrates those who helped shape the rhythm and reliability of our global check-in community.</p>
+
+      <h3 align="left">&#127760; Why This Matters</h3>
+      <p>Pioneers don't just participate&mdash;they pave the way. Your consistent presence has built a strong foundation for VarAC Wednesday, amplified peer-to-peer comms, and proven that digital amateur radio has a vibrant heartbeat every Wednesday.</p>
+
+      <h3 align="left">&#127942; Recognition</h3>
+      <div id="listbox" align="center">
+      <ul>
+        <li align="left">Award certificate featuring your callsign and year</li>
+        <li align="left">Permanent listing on our <strong>VarAC Pioneers Roll of Honor</strong></li>
+        <li align="left">Special badge in future check-in summaries</li>
+      </ul>
+      </div>
+
+      <h3 align="left">&#128197; Final Count Begins December 31, 2025</h3>
+      <p>Make sure your check-ins are logged and verified on the <a href="https://www.varacwednesday.net/lastWeekResults.html" target="_blank">Results Page</a>!</p>
+
+      <p>Big thanks to every operator who&rsquo;s been part of this journey. Whether you&rsquo;ve relayed messages from Ghana, linked stations from South Africa, or just consistently showed up from your shack in Maryland&mdash;<em>you&rsquo;re the reason VarAC lives and thrives.</em></p>
+
+      <p>Let&rsquo;s finish 2025 strong&mdash;20 weeks and beyond. &#128170;</p>
+
+      <img src="assets/images/VarAC-Pioneer-Certificate.jpg" style="max-width: 100%; height: auto;"/>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+
+    <script>
+      fetch('footer.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+              });
+
+      function getNextWednesday(date = new Date()) {
+              const currentDay = date.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+              const daysUntilWednesday = (3 - currentDay + 7) % 7 || 7;
+              const nextWednesday = new Date(date);
+              nextWednesday.setDate(date.getDate() + daysUntilWednesday);
+              console.log(nextWednesday);
+              return nextWednesday;
+            }
+
+      function getWeekOfMonth(date) {
+              // Clone the date to avoid modifying the original
+              const d = new Date(date);
+
+              // Set date to first day of the month
+              d.setDate(1);
+
+              // Get the day of week of the 1st (0 = Sunday, 1 = Monday, ...)
+              const startDay = d.getDay();
+
+              // Calculate adjusted date offset from start of the week
+              const dayOffset = date.getDate() + startDay - 1;
+
+              // Calculate week number (1-based)
+              return Math.floor(dayOffset / 7) + 1;
+            }
+
+      const nextWednesday = getNextWednesday();
+      const weekInMonth = getWeekOfMonth(nextWednesday);
+      messageRequested = "";
+      if (weekInMonth === 1) {
+              messageRequested = "This is the first week of the month. A standard check-in is requested with the option of including a weather report.";
+            }
+
+      if (weekInMonth === 3) { 
+              messageRequested = "This is the third week of the month.  A standard check-in is requested with the option of also checking-in via optional ICS-213 message.";
+            } else {
+                    messageRequested = "Please send a standard check-in message this week.";
+                  }
+
+      document.getElementById('netdate-placeholder').innerHTML = `<p>Join our next net on ${nextWednesday.toDateString()}.</p>`;
+      document.getElementById('netMessage-placeholder').innerHTML = `<p>${messageRequested}</p>`;
+
+    </script>
+
+  </body>
+</html>
+
