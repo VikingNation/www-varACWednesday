@@ -1,109 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VarAC Wednesday - Home</title>
-  <link rel="stylesheet" href="assets/css/varACWed-style.css" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
-  <link rel="manifest" href="/assets/images/site.webmanifest">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VarAC Wednesday - Home</title>
+    <link rel="stylesheet" href="assets/css/varACWed-style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/site.webmanifest">
 
-</head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8B54HBJ66J"></script>
-<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-	  gtag('config', 'G-8B54HBJ66J');
-</script>
-
-<body>
-  <header>
-    <img src="/assets/images/VarACWednesdayLogo-White.png" alt="VarAC Wednesday" width="300" height="auto" />
-    <p>Promoting digital comms excellence for all VarAC enthusiasts</p>
-  </header>
-
-  <div id="nav-placeholder"></div>
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8B54HBJ66J"></script>
   <script>
-     fetch('/navbar.html')
-     .then(res => res.text())
-     .then(data => {
-     document.getElementById('nav-placeholder').innerHTML = data;
-   });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8B54HBJ66J');
   </script>
 
+  <body>
+    <header>
+      <img src="/assets/images/VarACWednesdayLogo-White.png" alt="VarAC Wednesday" width="300" height="auto" />
+      <p>Promoting digital comms excellence for all VarAC enthusiasts</p>
+    </header>
 
-  <main>
-    <h2>Welcome to VarAC Wednesday!</h2>
-    <p>The weekly digital ham radio net using VarAC. Explore training resources, last week's stats, and learn more about operating VarAC with confidence.</p>
-    <p>Check out our <a href="launch.html">Official Launch message (July 13, 2025)</a></p>
-
-    <h2>Join our next net!</h2>
-    <div id="netdate-placeholder" align="center"></div>
-
-
-    <div id="netMessage-placeholder"></div>
-    <p>See <a href="about.html#instructions">VarAC Wednesday Instructions</a> for directions on how to send messages this week.</p>
-
-  </main>
-
-  <div id="footer-placeholder"></div>
+    <div id="nav-placeholder"></div>
+    <script>
+      fetch('/navbar.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+              });
+    </script>
 
 
-  <script>
-     fetch('footer.html')
-     .then(res => res.text())
-     .then(data => {
-     document.getElementById('footer-placeholder').innerHTML = data;
-     });
+    <main>
+      <h2>Welcome to VarAC Wednesday!</h2>
+      <p>The weekly digital ham radio net using VarAC. Explore training resources, last week's stats, and learn more about operating VarAC with confidence.</p>
+      <p>Check out our <a href="launch.html">Official Launch message (July 13, 2025)</a></p>
 
-    function getNextWednesday(date = new Date()) {
-      const currentDay = date.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
-      const daysUntilWednesday = (3 - currentDay + 7) % 7 || 7;
-      const nextWednesday = new Date(date);
-      nextWednesday.setDate(date.getDate() + daysUntilWednesday);
-      console.log(nextWednesday);
-      return nextWednesday;
-    }
+      <h2>Join our next net!</h2>
+      <div id="netdate-placeholder" align="center"></div>
 
-    function getWeekOfMonth(date) {
-      // Clone the date to avoid modifying the original
-      const d = new Date(date);
-      
-      // Set date to first day of the month
-      d.setDate(1);
-      
-      // Get the day of week of the 1st (0 = Sunday, 1 = Monday, ...)
-      const startDay = d.getDay();
 
-      // Calculate adjusted date offset from start of the week
-      const dayOffset = date.getDate() + startDay - 1;
+      <div id="netMessage-placeholder"></div>
+      <p>See <a href="about.html#instructions">VarAC Wednesday Instructions</a> for directions on how to send messages this week.</p>
 
-      // Calculate week number (1-based)
-      return Math.floor(dayOffset / 7) + 1;
-    }
+    </main>
 
-    const nextWednesday = getNextWednesday();
-    const weekInMonth = getWeekOfMonth(nextWednesday);
-    messageRequested = "";
-    if (weekInMonth === 1) {
-        messageRequested = "This is the first week of the month. A standard check-in is requested with the option of including a weather report.";
-    }
+    <div id="footer-placeholder"></div>
 
-    if (weekInMonth === 3) { 
-        messageRequested = "This is the third week of the month.  A standard check-in is requested with the option of also checking-in via optional ICS-213 message.";
-    } else {
-        messageRequested = "Please send a standard check-in message this week.";
-    }
 
-    document.getElementById('netdate-placeholder').innerHTML = `<p>Join our next net on ${nextWednesday.toDateString()}.</p>`;
-    document.getElementById('netMessage-placeholder').innerHTML = `<p>${messageRequested}</p>`;
+    <script>
+      fetch('footer.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+              });
 
-   </script>
- 
-</body>
+      function getNextWednesday(date = new Date()) {
+              const currentDay = date.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+
+              if (currentDay === 3) {
+                      return date;
+                    } else {
+
+                            const daysUntilWednesday = (3 - currentDay + 7) % 7 || 7;
+                            const nextWednesday = new Date(date);
+                            nextWednesday.setDate(date.getDate() + daysUntilWednesday);
+                            console.log(nextWednesday);
+                            return nextWednesday;
+                          }
+            }
+
+      function getWeekOfMonth(date) {
+              // Clone the date to avoid modifying the original
+              const d = new Date(date);
+
+              // Set date to first day of the month
+              d.setDate(1);
+
+              // Get the day of week of the 1st (0 = Sunday, 1 = Monday, ...)
+              const startDay = d.getDay();
+
+              // Calculate adjusted date offset from start of the week
+              const dayOffset = date.getDate() + startDay - 1;
+
+              // Calculate week number (1-based)
+              return Math.floor(dayOffset / 7) + 1;
+            }
+
+      const nextWednesday = getNextWednesday();
+      const weekInMonth = getWeekOfMonth(nextWednesday);
+      messageRequested = "";
+      if (weekInMonth === 1) {
+              messageRequested = "This is the first week of the month. A standard check-in is requested with the option of including a weather report.";
+            }
+
+      if (weekInMonth === 3) { 
+              messageRequested = "This is the third week of the month.  A standard check-in is requested with the option of also checking-in via optional ICS-213 message.";
+            } else {
+                    messageRequested = "Please send a standard check-in message this week.";
+                  }
+
+      document.getElementById('netdate-placeholder').innerHTML = `<p>Join our next net on ${nextWednesday.toDateString()}.</p>`;
+      document.getElementById('netMessage-placeholder').innerHTML = `<p>${messageRequested}</p>`;
+
+    </script>
+
+  </body>
 </html>
 
