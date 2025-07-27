@@ -1,102 +1,128 @@
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  margin: 0;
-  background: linear-gradient(to bottom, #eef6fc 0%, #cdddee 100%);
-  color: #222;
+	font-family: 'Segoe UI', Arial, sans-serif;
+	margin: 0;
+	background: linear-gradient(to bottom, #eef6fc 0%, #cdddee 100%);
+	color: #222;
 }
 
 header {
-  background-color: #002b55;
-  color: white;
-  padding: 2rem 1rem;
-  text-align: center;
-  background-image: url('waveform-header.png');
-  background-size: cover;
-  background-position: center;
+	background-color: #002b55;
+	color: white;
+	padding: 2rem 1rem;
+	text-align: center;
+	background-image: url('waveform-header.png');
+	background-size: cover;
+	background-position: center;
 }
 
 header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+	font-size: 2.5rem;
+	margin-bottom: 0.5rem;
 }
 
 header p {
-  font-style: italic;
-  font-size: 1.1rem;
+	font-style: italic;
+	font-size: 1.1rem;
 }
 
 nav {
-  background-color: #014b90;
+	background-color: #014b90;
 }
 
 ul.navbar {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
 }
 
 ul.navbar > li {
-  position: relative;
+	position: relative;
 }
 
 ul.navbar > li > a {
-  display: block;
-  color: white;
-  padding: 14px 20px;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
+	display: block;
+	color: white;
+	padding: 14px 20px;
+	text-decoration: none;
+	transition: background-color 0.3s ease;
 }
 
 ul.navbar > li:hover {
-  background-color: #00335c;
+	background-color: #00335c;
 }
 
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: white;
-  min-width: 220px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+	display: none;
+	position: absolute;
+	background-color: white;
+	min-width: 220px;
+	box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+	z-index: 1;
 }
 
 .dropdown-content a {
-  color: #014b90;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+	color: #014b90;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
 }
 
 .dropdown-content a:hover {
-  background-color: #f0f8ff;
+	background-color: #f0f8ff;
 }
 
 ul.navbar > li:hover .dropdown-content {
-  display: block;
+	display: block;
 }
 
 main {
-  padding: 3rem 2rem;
-  text-align: center;
+	padding: 3rem 2rem;
+	text-align: center;
 }
 
 main h2 {
-  font-size: 2rem;
-  color: #014b90;
+	font-size: 2rem;
+	color: #014b90;
 }
 
 main p {
-  font-size: 1.1rem;
-  margin-top: 1rem;
-  color: #333;
-  text-align: left;
+	font-size: 1.1rem;
+	margin-top: 1rem;
+	color: #333;
+	text-align: left;
 }
 
 .divider {
-  height: 11px;
-  background-color: #ccc;
-  margin: 30px 0;
+	height: 11px;
+	background-color: #ccc;
+	margin: 30px 0;
+}
+
+@media screen and (max-width: 640px) {
+	/* 1. Make the UL a column */
+	nav ul.navbar {
+		display: flex;            /* if you’re using flex */
+		flex-direction: column;   /* stack items vertically */
+		padding: 0;
+		margin: 0;
+		width: 100%;
+	}
+
+	/* 2. Reset any floats or inline-blocks */
+	nav ul.navbar > li {
+		float: none;              /* if you had floats */
+		display: block;           /* full-width list items */
+		width: 100%;
+	}
+
+	/* 3. Stretch the links for easy tapping */
+	nav ul.navbar > li > a {
+		display: block;
+		width: 100%;
+		padding: 1rem;            /* larger touch target */
+		border-top: 1px solid #00335c;  /* optional divider */
+	}
 }
 
