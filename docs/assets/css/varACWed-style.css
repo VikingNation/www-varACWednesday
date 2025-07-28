@@ -126,3 +126,8 @@ main p {
 	}
 }
 
+#trendChart {
+	  max-width: 100%;
+	    height: auto;
+}
+
