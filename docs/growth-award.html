@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VarAC Wednesday - Growth Award</title>
+    <link rel="stylesheet" href="assets/css/varACWed-style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/site.webmanifest">
+
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8B54HBJ66J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8B54HBJ66J');
+  </script>
+
+  <body>
+    <header>
+      <img src="/assets/images/VarACWednesdayLogo-White.png" alt="VarAC Wednesday" width="300" height="auto" />
+      <p>Promoting digital comms excellence for all VarAC enthusiasts</p>
+    </header>
+
+    <div id="nav-placeholder"></div>
+    <script>
+      fetch('/navbar.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+              });
+    </script>
+
+
+    <main>
+      <h2>🎉 VarAC Wednesday Growth Award 🏅</h2>
+
+      <p>The VarAC Wednesday team is proud to announce our limited time <strong>VarAC Wednesday Growth Award</strong></p>
+
+      <h3 align="left">&#128246; Award Criteria</h3>
+      <p>We invite operators who <strong>participated and grew the VarAC Wednesday community</strong>.</p>
+
+            <h3 align="left">&#127760; Why This Matters</h3>
+      <p>In June we issued our 2^7 challenge &mdash; achieve at least 128 check-ins (in a week) by July 30.  The VarAC community rose to the challenge!</p>
+
+      <h3 align="left">&#127942; Recognition</h3>
+      <p>This award recognizes VarAC community members that helped us acheive </p>
+      <div id="listbox" align="center">
+      <ul>
+        <li align="left">158 check-ins (July 23rd, 2025)</li>
+        <li align="left">Weekly Net growth from 31 to 117 weekly participants &mdash;<strong>277% growth.</strong></li>
+        <li align="left">Total of two-hundred forty-four (244) net participants (May 7-July 30)</li>
+      </ul>
+      </div>
+
+      <h3 align="left">Download your certificate here</h3>
+      <p align="center">Links to download your certificate active now thru August 31,2025.</br></br>
+      <a href="assets/images/Growth-Challenge-Letter.jpg">Link: Growth Certificate (Letter)</a></br>
+      <a href="assets/images/Growth-Challenge-A4.jpg">Link: Growth Certificate (A4)</a></br></br>
+<img src="assets/images/Growth-Challenge-Letter.jpg" style="max-width: 100%; height: auto;"/>
+      </p>
+
+      <p>A big thanks to every operator who&rsquo;s been part of this journey and has grown the community!</p>
+
+      <p>73,</br>
+      Mark KB0US</br>
+      Jason K3JSJ</br></br>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('footer.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+              });
+
+         </script>
+
+  </body>
+</html>
+
