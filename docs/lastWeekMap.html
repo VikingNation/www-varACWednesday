@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VarAC Wednesday - Weekly map</title>
+    <link rel="stylesheet" href="assets/css/varACWed-style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/site.webmanifest">
+
+
+  </head>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8B54HBJ66J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8B54HBJ66J');
+  </script>
+
+
+  <body>
+
+    <header>
+      <img src="/assets/images/VarACWednesdayLogo-White.png" alt="VarAC Wednesday" width="300" height="auto" />
+      <p>Promoting digital comms excellence for all VarAC enthusiasts</p>
+    </header>
+
+    <div id="nav-placeholder"></div>
+    <script>
+      fetch('/navbar.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+              });
+    </script>
+
+    <main>
+      <h2>VarAC Wednesday Map</h2>
+     <p>You can also view <a href="https://www.google.com/maps/d/u/0/viewer?mid=1yoaVtMNjZdXv7uTfcowT_a-J9JF6LJs&femb=1&ll=-3.81666561775622e-14%2C0&z=1" class="new-tab">last week's results on Google Maps</a> which allows easier navigation and filtering.</p>
+      <div class="divider"></div>
+
+    <iframe src="https://www.google.com/maps/d/u/4/embed?mid=1yoaVtMNjZdXv7uTfcowT_a-J9JF6LJs&ehbc=2E312F" width="640" height="480"></iframe>  
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('footer.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+              });
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+    // Select all links with class 'new-tab'
+    document.querySelectorAll('a.new-tab').forEach(function(link) {
+       link.addEventListener('click', function (e) {
+         e.preventDefault();
+         window.open(link.href, '_blank');
+       });
+     });
+   });
+ 
+
+    </script>
+  </body>
+</html>
+
