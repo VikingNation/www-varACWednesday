@@ -93,36 +93,43 @@
                           }
             }
 
-      function getWeekOfMonth(date) {
-              // Clone the date to avoid modifying the original
-              const d = new Date(date);
+      function getOrdinalWednesday(date) {
+                if (date.getDay() !== 3) {
+                            throw new Error("Provided date is not a Wednesday.");
+                          }
 
-              // Set date to first day of the month
-              d.setDate(1);
+                const year = date.getFullYear();
+                const month = date.getMonth();
 
-              // Get the day of week of the 1st (0 = Sunday, 1 = Monday, ...)
-              const startDay = d.getDay();
+                // Start from the 1st of the month and find all Wednesdays
+                const wednesdays = [];
+                for (let day = 1; day <= 31; day++) {
+                            const d = new Date(year, month, day);
+                            if (d.getMonth() !== month) break; // Exit if month changed
+                            if (d.getDay() === 3) wednesdays.push(d);
+                          }
 
-              // Calculate adjusted date offset from start of the week
-              const dayOffset = date.getDate() + startDay - 1;
+                // Find the index of the input Wednesday
+                const index = wednesdays.findIndex(d => d.getDate() === date.getDate());
 
-              // Calculate week number (1-based)
-              return Math.floor(dayOffset / 7) + 1;
+                if (index === -1) return null;
+
+                const ordinals = [1, 2, 3, 4, 5];
+                return ordinals[index];
             }
 
       const nextWednesday = getNextWednesday();
-      const weekInMonth = getWeekOfMonth(nextWednesday);
+      const weekInMonth = getOrdinalWednesday(nextWednesday);
       messageRequested = "";
-      if (weekInMonth === 1) {
+      if (weekInMonth == 1) {
               messageRequested = "This is the first week of the month. A standard check-in is requested with the option of including a weather report.";
             }
-
-      if (weekInMonth === 3) { 
+      else if (weekInMonth == 3) { 
               messageRequested = "This is the third week of the month.  A standard check-in is requested with the option of also checking-in via optional ICS-213 message.";
             } else {
                     messageRequested = "Please send a standard check-in message this week.";
                   }
-
+      
       document.getElementById('netdate-placeholder').innerHTML = `<p>Join our next net on ${nextWednesday.toDateString()}.</p>`;
       document.getElementById('netMessage-placeholder').innerHTML = `<p>${messageRequested}</p>`;
 
