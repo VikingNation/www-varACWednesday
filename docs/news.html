@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VarAC Wednesday - News</title>
+    <link rel="stylesheet" href="assets/css/varACWed-style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/site.webmanifest">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8B54HBJ66J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8B54HBJ66J');
+  </script>
+
+  <body>
+    <header>
+      <img src="/assets/images/VarACWednesdayLogo-White.png" alt="VarAC Wednesday" width="300" height="auto" />
+      <p>Promoting digital comms excellence for all VarAC enthusiasts</p>
+    </header>
+
+    <div id="nav-placeholder"></div>
+    <script>
+      fetch('/navbar.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+              });
+    </script>
+
+
+    <main>
+      <h2>We've got maps!</h2>
+      <p>
+      August 5, 2025 - We now have a <a href="lastWeekMap.html">check-in map</a> that shows locations of participants and email gateways stations.
+      </p>
+      <h2>Growth Award</h2>
+      <p>
+      July 31, 2025 - Be sure to get your <a href="growth-award.html">VarAC Wednesday Growth Award</a> and post it to your QRZ.com page!
+      </p>
+
+      <h2>VarAC Wednesday in the news</h2>
+      <p>
+      July 25, 2025 - Check out Amateure Radio Collective of Western Carolina's (ARCWC) feature <a href="https://arcwc.net/announcing-a-varac-wednesday-net/" class="new-tab">Announcing VarAC Wednesday.</a> 
+      </p>
+
+      <h2>Website Launch</h2>
+      <p>
+      July 13, 2025 - Check out our <a href="launch.html">Official website Launch message.</a>
+      </p>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('footer.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+              });
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+              // Select all links with class 'new-tab'
+              document.querySelectorAll('a.new-tab').forEach(function(link) {
+                      link.addEventListener('click', function (e) {
+                              e.preventDefault();
+                              window.open(link.href, '_blank');
+                            });
+                    });
+            });
+
+    </script>
+
+  </body>
+</html>
+

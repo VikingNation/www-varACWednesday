@@ -38,27 +38,16 @@
 
     <main>
       <h2>Welcome to VarAC Wednesday!</h2>
-      <p>The weekly digital ham radio net using VarAC. Explore training resources, last week's stats, and learn more about operating VarAC with confidence.</br></br>
-      Check out our <a href="launch.html">Official Launch message (July 13, 2025).</a></br></br>
-
-      Be sure to check-out our <a href="growth-award.html">VarAC Wednesday Growth Awaard</a></br></br>
-
-      Check out Amateure Radio Collective of Western Carolina's (ARCWC) feature <a href="https://arcwc.net/announcing-a-varac-wednesday-net/" class="new-tab">Announcing VarAC Wednesday.</a> 
-
-      </p>
-
+      <p>The weekly digital ham radio net using VarAC. Explore training resources, last week's stats and map, and learn more about operating VarAC with confidence. Check out our <a href="news.html">News page</a> for important announcements.</br></br></p>
 
       <h2>Join our next net!</h2>
       <div id="netdate-placeholder" align="center"></div>
 
-
-      <div id="netMessage-placeholder"></div>
       <p>See <a href="about.html#instructions">VarAC Wednesday Instructions</a> for directions on how to send messages this week.</p>
 
     </main>
 
     <div id="footer-placeholder"></div>
-
 
     <script>
       fetch('footer.html')
@@ -130,11 +119,9 @@
                     messageRequested = "Please send a standard check-in message this week.";
                   }
       
-      document.getElementById('netdate-placeholder').innerHTML = `<p>Join our next net on ${nextWednesday.toDateString()}.</p>`;
-      document.getElementById('netMessage-placeholder').innerHTML = `<p>${messageRequested}</p>`;
+      document.getElementById('netdate-placeholder').innerHTML = `<p>Join our next net on ${nextWednesday.toDateString()}. ${messageRequested}</p>`;
 
     </script>
-
   </body>
 </html>
 

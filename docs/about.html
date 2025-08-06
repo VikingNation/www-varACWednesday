@@ -65,17 +65,28 @@
 
         <p>Once you have reviewed your message to verify it is correct click the "SEND" button to place the message in your Outbox</p>
 
-        <h2>What do I use in subject and message body?</h2>
-        <p>Subject: VarAC Wednesday Check-In</br>Message body: call sign, first name, city or town, country, state, (HF or VHF, etc.)</br></br>
-        EXAMPLE 1:</br>
+        <h2>What do I use as the subject and message body?</h2>
+        <p>Subject: VarAC Wednesday Check-In</br>Message body: call sign, first name, city or town, county (if applicable), country or state (HF or VHF, etc.)</br></br>
+        EXAMPLE 1 Message body:</br>
         </br>
         WA8YNQ, Mark, Cincinnati, Hamilton, OH (HF)</br>
         </br>
-        EXAMPLE 2:</br>
+        EXAMPLE 2 Message body:</br>
         </br>
         ZS1OSS, Daniel, Cape Town, South Africa (VHF)</br>
         </p>
       </div>
+
+       <h2 id="sendingToWinlinkEmail" class="section">How do I send a copy to my CALLSIGN@WINLINK.ORG email address?</h2>
+       <p>Winlink implements a filter for inbound email messages (Reference: <a href="https://winlink.org/HELP" class="new-tab">Winlink HELP website</a>) Add the text "//WL2K R/" at the start of your Subject line to allow the message to be delivered to your CALLSIGN@WINLINK.ORG inbox. Including this tag will not affect our software's ability to process your check-in. For example</p>
+       <p>Subject: //WL2K R/VarAC Wednesday Check-In</p>
+
+       
+      <h2>Why should I include my personal email in the To line?</h2>
+      <p>Including your email address in the "To" line will send you a copy of the message. If you received a copy of your check-in message then most likely we received a copy (provided our email address was spelled correctly). If you did not receive a copy then there might be an issue at the email gateway station. <b>We recommend sending a check-in using another email gateway to make sure your check-in messages is received.</b></p>
+
+      <h2>Why might an email gateway fail to deliver email messages?</h2>
+      <p>There are several reasons why an email might fail to deliver your check-in message (operator of email gateway might have auto delivery turned off, the password or SMTP settings at gateway are incorrect, the internet connection at gateway might be down, the operator has enabled a filter to limit who is allowed to send an email through their station, etc.) We recommended you reach out to the operator of the gateway station to report any email delivery issues.  We recommend looking up the operator's callsign on QRZ.com to obtain their email address. If an email is not found then you can leave a VMAIL directed to the call sign of the operator of the gateway letting them know there might be an issue at their station.</p>
 
       <h2>How can canned templates be used to speed up your check-in?</h2>
       <p>VarAC's canned messages can be used to automate VMAIL message composition. Use our <a href="checkInGenerator.html">check-in generator tool</a> to generate a tailored canned message, containing your information, which can be used to check-in to the VarAC Wednesday net. Check out the <a href="training.html">training section</a> for instructions on how to use the check-in generator and using the message in VarAC.</p>
@@ -88,7 +99,7 @@
       To: varacwednesday@gmail.com</br>
       Subject: VarAC Wednesday Check-In</br> 
       Message body:  </br>
-      KB0US, Twin Falls, ID, (HF) </br> 
+      KB0US, Twin Falls, ID (HF) </br> 
       0934L, Clear, Sunny, 10mph NE, 51F </br></br>
       EXAMPLE 2: At 1317 UTC, it is overcast with light rain, 10°C, wind from the SW at 5 km/h </br></br>
       To: varacwednesday@gmail.com </br>
@@ -181,19 +192,18 @@
       <h2>When do I send my check-in message?</h2>
       <p align="left">Send your email every Wednesday between 0000 and 2400 your local time.</p>
 
+      <h2>How do I locate an email gateway to use to send my check-in message?</h2>
+      <p>Check out the <a href="lastWeekMap.html">check-in map</a> to see a list of gateways that were used last month.</p>
+
+      <p>We also recommend checking out our <a href="training.html#pskreporter">PSK Reporter for VarAC</a> training.</p>
       <h2>Additional information</h2>
       <ul align="left">
-        <li>Check-ins who do not use a VarAC EMAIL GATEWAY will not be counted.</li>
+        <li>The check-ins from participants who do not use a VarAC EMAIL GATEWAY will not be counted.</li>
         <li>You must be at on at least V11.0.7</li>
         <li>YOU DO NOT NEED AN EMAIL GATEWAY ON YOUR INSTALLATION OF VarAC TO CHECK IN!  You will be using the EMAIL GATEWAY of the beacon displaying the email gateway icon that 
           you connect with.</li>
         <li>In V11.2.0 and above, canned messages are available in the VMAIL dialog box making 
           participation in VarAC Wednesday even easier!
-
-
-          You must be on V11.0.7 or greater.
-          <li>YOU DO NOT NEED AN EMAIL GATEWAY ON YOUR INSTALLATION OF VarAC TO CHECK IN! You will be using the EMAIL GATEWAY of the beacon displaying the icon that you connect with.</li>
-          <li>In V11.2.0 and above, canned messages are available in the VMAIL dialog box making participation in VarAC Wednesday even easier!</li>
       </ul>
 
       <script>
