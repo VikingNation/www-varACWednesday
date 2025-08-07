@@ -1,108 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VarAC Wednesday - Training</title>
-  <link rel="stylesheet" href="assets/css/varACWed-style.css" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
-  <link rel="manifest" href="/assets/images/site.webmanifest">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VarAC Wednesday - Training</title>
+    <link rel="stylesheet" href="assets/css/varACWed-style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/site.webmanifest">
 
-</head>
+  </head>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8B54HBJ66J"></script>
-<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-	  gtag('config', 'G-8B54HBJ66J');
-</script>
-
-<body>
-
-
-  <div id="header-placeholder"></div>
-
-  <header>
-    <img src="/assets/images/VarACWednesdayLogo-White.png" alt="VarAC Wednesday" width="300" height="auto" />
-    <p>Promoting digital comms excellence for all VarAC enthusiasts</p>
-  </header>
-
-  <div id="nav-placeholder"></div>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8B54HBJ66J"></script>
   <script>
-     fetch('/navbar.html')
-     .then(res => res.text())
-     .then(data => {
-     document.getElementById('nav-placeholder').innerHTML = data;
-   });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8B54HBJ66J');
   </script>
 
-  <main>
-    <div id="check-in-generator" class="section"></div>
-    <h2>Video walk-thru of Check-in Template Generator</h2>
-    <p>Use our <a href="checkInGenerator.html" class="new-tab">Check-in Template Generator</a> tool to make check-ins a breeze.  Check-out the video tutorial below</br></br> 
-    <div id="video-frame" align="center">
-    <iframe width="560" height="315"
-	  src="https://www.youtube.com/embed/Vu3j_ioLzhQ"
-	    title="VarAC Check-in generator walk-thru" frameborder="0"
-	      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-	        allowfullscreen>
-	</iframe>
-    </div>
-
-    <div class="divider"></div>
-    <div id="top10-tips" class="section">
-    <h2>Top 10 Tips for new users</h2>
-    <p>New to VarAC or want to learn more about best practices? Check-out our <a href="/pdf/Top-10-Things-for-New-Users.pdf" class="new-tab">VarAC Top 10 for New Users</a></p>
-
-    <div class="divider"></div>
-    <div id="voice-announcements" class="section">
-    <h2>Default Speaker Setting in Windows</h2>
-    <p>It is important to properly setup your default speaker settings in Windows. Voice announcements are a great way to hear what is going on with VarAC. They are not so great when they are transmitted over the air and cause QRM for fellow operators. Check-out our <a href="/pdf/VarAC-Narrator-Transmitted.pdf" class="new-tab">"Are you sending voice annoncements over the air?"</a> training and you will be enjoying those VarAC announcements without transmitting them over the air.</p>
-
-    <div class="divider"></div>
-    <div id="pskreporter" class="section">
-    <h2>Be a VarAC PSKreporter champion!</h2>
-    <p>PSKreporter is a great tool to see what stations are on the air and who is receiving your signal. Did you know VarAC allows you to report what VarAC stations you are hearing? Check-out our <a href="/pdf/PSKReporter-for-VarAC-Users.pdf" class="new-tab">PSKReporter for VarAC Users</a> to become a champion at using this tool!</p>
+  <body>
 
 
-    <div class="divider"></div>
-    <div id="minimize-disconnects" class="section">
-    <h2>Minimize Vara disconnects</h2>
-    <p>There is nothing worse than experiencing a disconnect during a VarAC session. Check-out our <a href="/pdf/Minimizing-VarAC-Disconnects.pdf" class="new-tab">Minimizing disconnects</a> training to help optimize your station's setup.</p>
+    <div id="header-placeholder"></div>
 
+    <header>
+      <img src="/assets/images/VarACWednesdayLogo-White.png" alt="VarAC Wednesday" width="300" height="auto" />
+      <p>Promoting digital comms excellence for all VarAC enthusiasts</p>
+    </header>
 
-    <div class="divider"></div>
-    <div id="vara-meter" class="section">
-    <h2>Can you hear me now? Optimize audio levels for your VARA modem</h2>
-    <p>Audio settings can be complicated. Check-out our <a href="/pdf/Setting-the-VARA-HF-VU-meter-Rev-1.pdf" class="new-tab">Setting VARA HF VU Meter</a> training and best practices on setting audio levels.</p>
+    <div id="nav-placeholder"></div>
+    <script>
+      fetch('/navbar.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+              });
+    </script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
+    <main>
+      <div id="check-in-generator" class="section">
+        <h2>Video walk-thru of Check-in Template Generator</h2>
+        <p>Use our <a href="checkInGenerator.html" class="new-tab">Check-in Template Generator</a> tool to make check-ins a breeze.  Check-out the video tutorial below</br></br> 
+        <div id="video-frame" align="center">
+          <iframe width="560" height="315"
+                              src="https://www.youtube.com/embed/Vu3j_ioLzhQ"
+                              title="VarAC Check-in generator walk-thru" frameborder="0"
+                                                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                                         allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div id="top10-tips" class="section">
+        <h2>Top 10 Tips for new users</h2>
+        <p>New to VarAC or want to learn more about best practices? Check-out our <a href="/pdf/Top-10-Things-for-New-Users.pdf" class="new-tab">VarAC Top 10 for New Users</a></p>
+      </div>
 
-    // Select all links with class 'new-tab'
-    document.querySelectorAll('a.new-tab').forEach(function(link) {
-       link.addEventListener('click', function (e) {
-         e.preventDefault();
-         window.open(link.href, '_blank');
-       });
-     });
-   });
-   
-</script>
+      <div class="divider"></div>
+      <div id="voice-announcements" class="section">
+        <h2>Default Speaker Setting in Windows</h2>
+        <p>It is important to properly setup your default speaker settings in Windows. Voice announcements are a great way to hear what is going on with VarAC. They are not so great when they are transmitted over the air and cause QRM for fellow operators. Check-out our <a href="/pdf/VarAC-Narrator-Transmitted.pdf" class="new-tab">"Are you sending voice annoncements over the air?"</a> training and you will be enjoying those VarAC announcements without transmitting them over the air.</p>
+      </div>
 
-  </main>
-  <div id="footer-placeholder"></div>
-   <script>
-     fetch('footer.html')
-     .then(res => res.text())
-     .then(data => {
-     document.getElementById('footer-placeholder').innerHTML = data;
-   });
-   </script>
+      <div class="divider"></div>
+      <div id="pskreporter" class="section">
+        <h2>Be a VarAC PSKreporter champion!</h2>
+        <p>PSKreporter is a great tool to see what stations are on the air and who is receiving your signal. Did you know VarAC allows you to report what VarAC stations you are hearing? Check-out our <a href="/pdf/PSKReporter-for-VarAC-Users.pdf" class="new-tab">PSKReporter for VarAC Users</a> to become a champion at using this tool!</p>
 
-</body>
+      </div>
+
+      <div class="divider"></div>
+      <div id="minimize-disconnects" class="section">
+        <h2>Minimize Vara disconnects</h2>
+        <p>There is nothing worse than experiencing a disconnect during a VarAC session. Check-out our <a href="/pdf/Minimizing-VarAC-Disconnects.pdf" class="new-tab">Minimizing disconnects</a> training to help optimize your station's setup.</p>
+      </div>
+
+      <div class="divider"></div>
+      <div id="vara-meter" class="section">
+        <h2>Can you hear me now? Optimize audio levels for your VARA modem</h2>
+        <p>Audio settings can be complicated. Check-out our <a href="/pdf/Setting-the-VARA-HF-VU-meter-Rev-1.pdf" class="new-tab">Setting VARA HF VU Meter</a> training and best practices on setting audio levels.</p>
+      </div>
+
+      <div class="divider"></div>
+      <div id="guidance-for-gateways" class="section">
+        <h2>Guidance for VarAC Email Gateways (FCC Party 97)</h2>
+        <p>VarAC email gateways in the U.S. must comply with FCC Part 97 regulations.  Our <a href="/pdf/Are-VarAC-gateways-legal.pdf" class="new-tab">"Are VarAC gateways legal?"</a> document covers important elements of FCC Part 97 regulation that operators need to consider. Note: Please consult relevant regulation of your country for guidance on this topic.</p>
+      </div>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+                  // Select all links with class 'new-tab'
+                  document.querySelectorAll('a.new-tab').forEach(function(link) {
+                            link.addEventListener('click', function (e) {
+                                      e.preventDefault();
+                                      window.open(link.href, '_blank');
+                                    });
+                          });
+                });
+
+      </script>
+
+    </main>
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('footer.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+              });
+    </script>
+
+  </body>
 </html>
 
