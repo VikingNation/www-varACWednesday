@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VarAC Wednesday - R.C.C Award</title>
+    <link rel="stylesheet" href="assets/css/varACWed-style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/site.webmanifest">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8B54HBJ66J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8B54HBJ66J');
+  </script>
+
+  <body>
+    <header>
+      <img src="/assets/images/VarACWednesdayLogo-White.png" alt="VarAC Wednesday" width="300" height="auto" />
+      <p>Promoting digital comms excellence for all VarAC enthusiasts</p>
+    </header>
+
+    <div id="nav-placeholder"></div>
+    <script>
+      fetch('/navbar.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+              });
+    </script>
+
+
+    <main>
+    <h2 align="center">🎉 VarAC Rag Chewers’ Club 🏅</h2>
+    <p align="left">
+    To seek admission into the illustrious VarAC Rag Chewers’ Club (henceforth referred to as the VarAC R.C.C.), kindly access your VarAC Statistics (Tools &gt; Statistics) and meticulously complete the following distinguished form <a href="https://forms.gle/QNvJRFfJa3m6yHhPA" class="new-tab">R.C.C. Award Application</a>.
+    </p>
+
+    <h3 align="left">&#128246; Award Criteria</h3>
+    <p>
+    Should your QSO endure for a minimum of 30 minutes, you shall be bestowed with the coveted VarAC Rag Chewers’ Club certificate, suitable for printing on your personal printing apparatus or utilized in any manner you deem judicious. Should your submission reflect a QSO of at least 60 minutes, your certificate shall be adorned with the highly venerated One Hour Endorsement, a mark of true distinction.</br>
+    Pro Tip: For an air of unparalleled sophistication, consider employing fine ivory or delicate light blue printer paper to elevate the grandeur of your award.
+    </p>
+    <h3 align="left">&#128227; Share you prestigious award!</h3>
+    <p>
+    You are are henceforth encourged to post this estemed award to your QRZ.com page and your social media channels.  When you share, be sure to include a link to this page, <a href="In noble fellowship,">https://www.varacwednesday.net/rcc-award.html</a>, and encourge your friends and fellow operators to join the hallowed halls of the VarAC R.C.C.
+    </p>
+
+    <h3 align="left">&#128737; The Illustrious Origins of the VarAC R.C.C.</h3>
+    <p>
+    The VarAC R.C.C. pays homage to a venerable tradition initiated by the American Radio Relay League (ARRL), commencing in the 1950s, or perchance earlier, and concluding in 2004. This program, known as the Rag Chewers’ Club, was a delightfully droll certificate, conferred upon those who solemnly attested to engaging in a QSO of no less than 30 minutes. The certificate, often the first accolade earned by fledgling radio amateurs, was a cherished emblem of camaraderie.
+    </br></br>  
+
+    The charm of the original R.C.C. lay in its whimsical nature: there existed no actual club, and thus, its purported benefits were delightfully fictitious. The certificate bore the signature of “The Old Sock,” a playful nod to its tongue-in-cheek essence.
+    Notably, the original R.C.C. certificate included a clause stating, “In accepting this certificate, the member agrees to abide by the published rules of the organization.” As there was no organization, and consequently no published rules, this line was a masterful stroke of irony, encapsulating the certificate’s status as a grand inside jest.
+    </p>
+    <h3 align="left">&#128260; Adapting to Modern Sensibilities</h3>
+    <p>
+    Alas, the 1950s have long since faded, and the subtleties of such wry humor are oft lost on a contemporary global audience. To forestall any consternation among 21st-century amateur radio enthusiasts seeking the nonexistent “published rules,” the VarAC R.C.C. has, in its sagacity, omitted this line. Discretion, as ever, remains the better part of valor.
+
+    <h3 align="left">&#128220;  Award example</h3>
+    <p>
+    <img src="assets/images/rcc_award/RCC_KB0US_30_minutes.jpg" style="max-width: 100%; height: auto;"/>
+
+    </br></br>
+  
+    Mark, KB0US</br>
+    Jason, K3JSJ</br>
+    </p>
+
+    </p>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('footer.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+              });
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+              // Select all links with class 'new-tab'
+              document.querySelectorAll('a.new-tab').forEach(function(link) {
+                      link.addEventListener('click', function (e) {
+                              e.preventDefault();
+                              window.open(link.href, '_blank');
+                            });
+                    });
+            });
+
+   </script>
+
+  </body>
+</html>
+
