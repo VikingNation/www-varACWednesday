@@ -3,8 +3,8 @@ from datetime import datetime
 
 # Input and output paths
 input_file = "./check-in-history/results.txt"
-csv_output = "metrics_new_users.csv"
-txt_output = "new_users_by_date.txt"
+csv_output = "./docs/assets/metrics_new_users_by_week.csv"
+txt_output = "new_users_by_week.txt"
 
 # Step 1: Parse file into date -> callsigns dictionary
 date_to_callsigns = {}
