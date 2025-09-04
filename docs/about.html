@@ -89,7 +89,7 @@
       </div>
 
        <h2 id="sendingToWinlinkEmail" class="section">How do I send a copy to my CALLSIGN@WINLINK.ORG email address?</h2>
-       <p>Winlink implements a filter for inbound email messages (Reference: <a href="https://winlink.org/HELP" class="new-tab">Winlink HELP website</a>) Add the text "//WL2K R/" at the start of your Subject line to allow the message to be delivered to your CALLSIGN@WINLINK.ORG inbox. Including this tag will not affect our software's ability to process your check-in. For example</p>
+       <p>Winlink implements a filter for inbound email messages (Reference: <a href="https://winlink.org/HELP" class="new-tab">Winlink HELP website</a>) Add the text "//WL2K R/" at the start of your Subject line to allow the message to be delivered to your CALLSIGN@WINLINK.ORG inbox. The "//WL2K" informs WINLINK mail servers to by-pass the anti-spam ACCEPTLIST and routes the message.  The "R" letter indicates routine delivery.  Including this tag will not affect our software's ability to process your check-in. For example</p>
        <p>Subject: //WL2K R/VarAC Wednesday Check-In</p>
 
        
@@ -204,9 +204,45 @@
       <p align="left">Send your email every Wednesday between 0000 and 2400 your local time.</p>
 
       <h2>How do I locate an email gateway to use to send my check-in message?</h2>
-      <p>Check out the <a href="lastWeekMap.html">check-in map</a> to see a list of gateways that were used last month.</p>
+      <p>Check out the <a href="lastWeekMap.html">check-in map</a> to see a list of gateways that were used last week.</p>
 
       <p>We also recommend checking out our <a href="training.html#pskreporter">PSK Reporter for VarAC</a> training.</p>
+
+
+      <div class="divider"></div>
+      <div id="aboutMap" class="section">
+        <h2>Does VarAC Wednesday produce a map?</h2>
+        <p>Yes - you can find the map of last week's check-ins on our <a href="lastWeekMap.html">Last Week's Map page</a></p>
+
+        <h2>How do you determine my location?</h2>
+        <p align="left">We use the following steps to determine your location. If a step is satisfied we stop and use that location information to plot on the check-in map:</br>
+        <ul align="left">
+          <li>Use GPS location in the check-in message</li>
+          <li>Use participant's callsign to look up their location information on QRZ.com</li>
+              <ul align="left">
+                <li>Use GPS coordinates from the participant's QRZ.com profile</li>
+                <li>Use Grid square from the participant's QRZ.com profile and convert to GPS coordiante</li>
+              </ul>
+        </ul>
+
+        <h2>Why is my location on the map incorrect?</h2>
+        <p>Please check out our vido, <a href="training.html#whereami">Why amd I missing from the check-in map?</a></p>
+
+        <p>If you <em>did not</em> provide your GPS locaiton in the check-in, we pull your location from QRZ.com. Please check your profile on QRZ and update as needed.</br></br>
+   If you <em>did</em> provide your GPS location in the check-in please double check what you provided and where your are located. If after that things still look to be in error please <a href="contact.html">Contact Us</a> and ask us to check into the issue.
+        </p>
+
+        <h2>How do I correct my location in QRZ.com?</h2>
+        <p>Check out Appendix 2 of our <a href="pdf/VarAC_GPS_Setup_Static_Location.pdf">VarAC GPS Setup (Static GPS) training document</a> for a walk-thru of how to update your location information on QRZ.com.</p>
+
+        <h2>Do you require a specific format to provide GPS?</h2>
+        <p>Yes - instructions on the format as well as a walk thru video can be found on our <a href="training.html#StaticGPS">VarAC GPS Setup (Static GPS) training</a>.</p>
+
+       
+        
+      </div>
+
+      <div class="divider"></div>
       <h2>Additional information</h2>
       <ul align="left">
         <li>The check-ins from participants who do not use a VarAC EMAIL GATEWAY will not be counted.</li>
