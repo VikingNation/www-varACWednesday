@@ -56,8 +56,6 @@
         }
     </style>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   </head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8B54HBJ66J"></script>
@@ -95,28 +93,6 @@
           <tr>
             <td>
               <div class="criteria" id="results">
-                <h3>Latitude Checks</h3>
-                <ul id="latCriteria">
-                  <li id="latDegrees">Degrees provided</li>
-                  <li id="latDegree">Degree symbol provided</li>
-                  <li id="latSpace">Space between degree symbol and decimal seconds</li>
-                  <li id="latMinutes">Minutes provided</li>
-                  <li id="latHemisphere">Hemisphere provided</li>
-                  <li id="latRange">Latitude in valid range (0 to 90)</li>
-                </ul>
-                <h3>Longitude Checks</h3>
-                <ul id="lonCriteria">
-                  <li id="lonDegrees">Degrees provided</li>
-                  <li id="lonDegree">Degree symbol provided</li>
-                  <li id="lonSpace">Space between degree symbol and decimal seconds</li>
-                  <li id="lonMinutes">Minutes provided</li>
-                  <li id="lonHemisphere">Hemisphere provided</li>
-                  <li id="lonRange">Longitude in valid range (0 to 180)</li>
-                </ul>
-                <h3>Delimiter Check</h3>
-                <ul>
-                  <li id="delimiter">Space delimiter between Latitude and Longitude</li>
-                </ul>
               </div>
             </td>
             <td>
@@ -127,11 +103,55 @@
 
       <script>
 
-        function isNumber(value) {
-                    return typeof value === 'number' && isFinite(value);
-                }
-
         function checkFormat() {
+              const input = document.getElementById("gpsInput").value.trim();
+              const gpsDDM = /(\d+)°(?:\s+)?(\d+\.\d+)(?:\s)?[NS](?:\s)?(\d+)°(?:\s+)?(\d+.\d+)(?:\s)?[E|W]/;
+          
+              // Do we have Degree Decimal format?
+              const matchDDM = input.match(gpsDDM);
+              if (matchDDM) {
+                        updateCriteriaDDM()
+                        checkFormatDDM()
+                      }
+
+        }
+
+        function updateCriteriaDDM() {
+                    const container = document.getElementById('results');
+
+                    if (!container) {
+                                  console.error("Element with id 'results' not found.");
+                                  return;
+                                }
+
+                    container.innerHTML = `
+                      <h3>Latitude Checks</h3>
+           <ul id="latCriteria">
+             <li id="latDegrees">Degrees provided</li>
+             <li id="latDegree">Degree symbol provided</li>
+             <li id="latSpace">Space between degree symbol and decimal seconds</li>
+             <li id="latMinutes">Minutes provided</li>
+             <li id="latHemisphere">Hemisphere provided</li>
+             <li id="latRange">Latitude in valid range (0 to 90)</li>
+           </ul>
+           <h3>Longitude Checks</h3>
+           <ul id="lonCriteria">
+             <li id="lonDegrees">Degrees provided</li>
+             <li id="lonDegree">Degree symbol provided</li>
+             <li id="lonSpace">Space between degree symbol and decimal seconds</li>
+             <li id="lonMinutes">Minutes provided</li>
+             <li id="lonHemisphere">Hemisphere provided</li>
+             <li id="lonRange">Longitude in valid range (0 to 180)</li>
+           </ul>
+           <h3>Delimiter Check</h3>
+           <ul>
+             <li id="delimiter">Space delimiter between Latitude and Longitude</li>
+           </ul>
+
+         `;
+        }
+
+        function checkFormatDDM() {
                   const input = document.getElementById("gpsInput").value.trim();
                   const delimiter = /[NS]\s+(\d+)°/;
                   const gpsDel = /(\d+)°(?:\s+)?(\d+\.\d+)(?:\s)?[NS](?:\s)?(\d+)°(?:\s+)?(\d+.\d+)(?:\s)?[E|W]/;
