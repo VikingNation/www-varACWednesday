@@ -105,33 +105,35 @@ body {
 
         function checkFormat() {
                   const input = document.getElementById("gpsInput").value.trim();
+                  const degChar = /^[^°]*$/;
                   const gpsDDM = /(\d+)°(?:\s+)?(\d+\.\d+)(?:\s)?[NS](?:\s)?(\d+)°(?:\s+)?(\d+.\d+)(?:\s)?[EW]/;
                   //const gpsDDM = /(\d+).*(\d+.\d)[NS](?:\s)?/;
                   const gpsDM = /([+-]?\d+(?:\.\d+)?)\s*,\s*([+-]?\d+(?:\.\d+)?)/;
-                  const gpsDMS = /^(?<latDeg>\d{1,3})(?<latDegSym>°)?\s*(?<latMin>\d{1,2})(?<latMinSym>')?\s*(<latSec>\d{1,2}(?:\.\d+)?)(?<latSecSym>")?\s*(?<latHem>[NS])\s+(?<lonDeg>\d{1,3})(?<lonDegSym>°)?\s*(?<lonMin>\d{1,2})(?<lonMinSym>')?\s*(?<lonSec>\d{1,2}(?:\.\d+)?)(?<lonSecSym>")?\s*(?<lonHem>[EW])/;
+                  const gpsDMS = /^(?<latDeg>\d{1,3})(?<latDegSym>°)?\s*(?<latMin>\d{1,2})(?<latMinSym>')?\s*(?<latSec>\d{1,2}(?:\.\d+)?)(?<latSecSym>")?\s*(?<latHem>[NS])\s+(?<lonDeg>\d{1,3})(?<lonDegSym>°)?\s*(?<lonMin>\d{1,2})(?<lonMinSym>')?\s*(?<lonSec>\d{1,2}(?:\.\d+)?)(?<lonSecSym>")?\s*(?<lonHem>[EW])/;
 
-                  const matchDMS = input.match(gpsDMS);
-                  if (matchDMS) {
-                            console.log("Found: Matched Degree Minute Second format GPS coordinate");
-                            updateCriteriaDMS();
-                            checkFormatDMS();
+                  const matchDM = input.match(gpsDM);
+                  const matchNotDegSym = input.match(degChar); 
+                  if ((matchDM) && (matchNotDegSym)) {
+                            console.log("Found: Matched Degree decimal format GPS coordinate");
+                            updateCriteriaDM();
+                            checkFormatDM();
                   } else {
 
-                              const matchDM = input.match(gpsDM);
-                              if (matchDM) {
-                                console.log("Found:  Matched Degree Decimal (DM) format GPS coorinate");
+                              const matchDDM = input.match(gpsDDM);
+                              if (matchDDM) {
+                                console.log("Found:  Matched Degree decimal minute (DDM) format GPS coorinate");
 
-                                updateCriteriaDM();
-                                checkFormatDM();
+                                updateCriteriaDDM();
+                                checkFormatDDM();
                               } else {
 
-                                        // Do we have Degree Decimal format?
-                                      const matchDDM = input.match(gpsDDM);
-                                      if (matchDDM) {
-                                          console.log("Found:  Matched Degree Decimal Minute (DDM) format GPS coorinate");
+                                        // Do we have Degree Minute Second format?
+                                      const matchDMS = input.match(gpsDMS);
+                                      if (matchDMS) {
+                                          console.log("Found:  Matched Degree Decimal Minute (DMS) format GPS coorinate");
 
-                                          updateCriteriaDDM();
-                                          checkFormatDDM();
+                                          updateCriteriaDMS();
+                                          checkFormatDMS();
                                       }
                               }
 
@@ -149,7 +151,7 @@ body {
                           }
 
                   container.innerHTML = `
-       <h2>Found Decimal Degree format</h2>
+       <h2>Found Degree Minute Second format</h2>
        <h3>Latitude Checks</h3>
        <ul id="latCriteria">
        <li id="latDegrees">Degrees provided</li>
@@ -257,7 +259,22 @@ body {
 
                           }
 
-          
+                           // Plot on map
+                            const mapDiv = document.getElementById("map");
+                            mapDiv.innerHTML = ""; // 🔄 Clear previous map
+                            if (!(lat == -1) && ! (lon == -1) && allCriteriaChecked()  ) {
+                                      const mapFrame = document.createElement("iframe");
+                                      mapFrame.width = "100%";
+                                      mapFrame.height = "400";
+                                      mapFrame.style.border = "0";
+                                      mapFrame.loading = "lazy";
+                                      mapFrame.allowFullscreen = true;
+                                      mapFrame.referrerPolicy = "no-referrer-when-downgrade";
+                                      mapFrame.src = `https://www.google.com/maps?q=${lat},${lon}&output=embed`;
+                                      mapDiv.appendChild(mapFrame);
+                                    }
+
+
                 } 
 
         function updateCriteriaDM() {
