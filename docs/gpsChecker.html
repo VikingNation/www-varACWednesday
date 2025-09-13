@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
     <link rel="manifest" href="/assets/images/site.webmanifest">
 
-    <!--- CSS Styles for t his page -->
+    <!--- CSS Styles for this page -->
     <style>
 
       body {
@@ -99,7 +99,7 @@
                 <ul id="latCriteria">
                   <li id="latDegrees">Degrees provided</li>
                   <li id="latDegree">Degree symbol provided</li>
-                  <li id="latSpace">Space between degree symbol and seconds</li>
+                  <li id="latSpace">Space between degree symbol and decimal seconds</li>
                   <li id="latMinutes">Minutes provided</li>
                   <li id="latHemisphere">Hemisphere provided</li>
                   <li id="latRange">Latitude in valid range (0 to 90)</li>
@@ -108,7 +108,7 @@
                 <ul id="lonCriteria">
                   <li id="lonDegrees">Degrees provided</li>
                   <li id="lonDegree">Degree symbol provided</li>
-                  <li id="lonSpace">Space between degree symbol and seconds</li>
+                  <li id="lonSpace">Space between degree symbol and decimal seconds</li>
                   <li id="lonMinutes">Minutes provided</li>
                   <li id="lonHemisphere">Hemisphere provided</li>
                   <li id="lonRange">Longitude in valid range (0 to 180)</li>
@@ -126,14 +126,19 @@
       </div>
 
       <script>
+
+        function isNumber(value) {
+                    return typeof value === 'number' && isFinite(value);
+                }
+
         function checkFormat() {
                   const input = document.getElementById("gpsInput").value.trim();
                   const delimiter = /[NS]\s+(\d+)°/;
                   const gpsDel = /(\d+)°(?:\s+)?(\d+\.\d+)(?:\s)?[NS](?:\s)?(\d+)°(?:\s+)?(\d+.\d+)(?:\s)?[E|W]/;
                   const match = input.match(gpsDel);
 
-                  lat=0;
-                  lon=0;
+                  lat=-1;
+                  lon=-1;
                   if (match) {
                             console.log("Matched GPS extraction");
                             lat = parseFloat(match[1])+parseFloat(match[2])/60; // Group 1: degrees
@@ -155,29 +160,47 @@
                   const allChecks = resultsDiv.querySelectorAll("li");
                   allChecks.forEach(item => item.classList.remove("checked"));
 
-                  // Basic numeric check
-                  toggleCheck("latDegrees", !isNaN(lat));
-                  toggleCheck("lonDegrees", !isNaN(lon));
-
                   // Format checks (for illustrative purposes)
-                  const degreeSymbol = /°/;
-                  const spaceBetween = /(\d+°)\s+(\d+)/;
+                  const degreeSymbolLat = /(\d+)°.*[NS]/;
+                  const degreeSymbolLon = /[NS](?:\s+)?(\d+)°/;
+                  const degreesProvided = /(\d+)(?=°).*?(\d+)(?=°)/;
+                  const spaceLat = /(\d+°)\s+(\d+)/;
+                  const spaceLon = /[NS](?:\s+)?(\d+)°\s(\d+)/;
                   const LatminutesProvided = /(\d+.\d+)(?:\s+)?[NS]/;
                   const LonminutesProvided = /(\d+.\d+)(?:\s+)?[EW]/;
                   const hemisphereLat = /[NS]/;
                   const hemisphereLon = /[EW]/;
 
-                  toggleCheck("latDegree", degreeSymbol.test(input));
-                  toggleCheck("latSpace", spaceBetween.test(input));
+                  toggleCheck("latDegree", degreeSymbolLat.test(input));
+                  toggleCheck("latSpace", spaceLat.test(input));
                   toggleCheck("latMinutes", LatminutesProvided.test(input));
                   toggleCheck("latHemisphere", hemisphereLat.test(input));
 
-                  toggleCheck("lonDegree", degreeSymbol.test(input));
-                  toggleCheck("lonSpace", spaceBetween.test(input));
+                  toggleCheck("lonDegree", degreeSymbolLon.test(input));
+                  toggleCheck("lonSpace", spaceLon.test(input));
                   toggleCheck("lonMinutes", LonminutesProvided.test(input));
                   toggleCheck("lonHemisphere", hemisphereLon.test(input));
 
                   toggleCheck("delimiter", parts);
+
+                  // Check if degres in Lat and Lon provided 
+                  match_degrees = input.match(degreesProvided);
+                  
+                  if (match_degrees) {
+                  console.log("match_degrees[1]: " + match_degrees[1]);
+                  console.log("match_degrees[2]: " + match_degrees[2]);
+                  }
+                  if (match_degrees) {
+                            if (match_degrees[1].length > 0 ) {
+                            console.log("Toggle latDegrees"); 
+                            toggleCheck("latDegrees", true);
+                  }
+
+                            if (match_degrees[2].length > 0) {
+                            console.log("Toggle lonDegrees");
+                            toggleCheck("lonDegrees", true);
+                  }
+                          }
 
                   // Range checks
                   toggleCheck("latRange", !isNaN(lat) && lat >= -90 && lat <= 90);
@@ -186,7 +209,7 @@
                   // Plot on map
                   const mapDiv = document.getElementById("map");
                   mapDiv.innerHTML = ""; // 🔄 Clear previous map
-                  if (!isNaN(lat) && !isNaN(lon)) {
+                  if (!(lat == -1) && ! (lon == -1) && allCriteriaChecked()  ) {
                             const mapFrame = document.createElement("iframe");
                             mapFrame.width = "100%";
                             mapFrame.height = "400";
@@ -209,6 +232,33 @@
                                   }
                 }
 
+        function resetChecks() {
+                  toggleCheck("latDegree", false);
+                  toggleCheck("latSpace", false);
+                  toggleCheck("latMinutes", false);
+                  toggleCheck("latHemisphere", false);
+
+                  toggleCheck("lonDegree", false);
+                  toggleCheck("lonSpace", false);
+                  toggleCheck("lonMinutes", false);
+                  toggleCheck("lonHemisphere", false);
+
+                  toggleCheck("delimiter", false);
+
+                  // Range checks
+                  toggleCheck("latRange", false);
+                  toggleCheck("lonRange", false);
+                }
+
+
+        function allCriteriaChecked() {
+                    const latItems = document.querySelectorAll('#latCriteria li');
+                    const lonItems = document.querySelectorAll('#lonCriteria li');
+
+                    const allItems = [...latItems, ...lonItems];
+
+                    return allItems.every(item => item.classList.contains('checked'));
+                }
 
       </script>
 
