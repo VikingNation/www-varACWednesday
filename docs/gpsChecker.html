@@ -134,15 +134,38 @@ body {
 
                                           updateCriteriaDMS();
                                           checkFormatDMS();
-                                      }
-                              }
+                                      } else {
+                                                console.log("Error: Did not find valid format");
+                                                updateTraining();
+                                                checkFormatTraining();
+                                              }
 
-
+                      }
                     }
                 }
 
+        function checkFormatTraining() {
+                   // Show criteria section
+                  const resultsDiv = document.getElementById("results");
+                  resultsDiv.style.display = "block";
+                }
+        function updateTraining() {
+                  const container = document.getElementById('results');
+                  console.log("In updateCriteriaDM()");
+                  if (!container) {
+                            console.error("Element with id 'results' not found.");
+                            return;
+                          }
 
+                  container.innerHTML = `
+                  <h2>Error: Did not find accepted format</h2>
+                  <p>Please review the following PDF for details on GPS formats we accept for your weekly check-in: <a href="/pdf/VarAC_Wed_GPS_working_aid.pdf" class="new-tab">VarAC Wednesday GPS working-aid</a>.</p>
+                `;
+
+                 
+                }
         function updateCriteriaDMS() {
+                  
                   const container = document.getElementById('results');
                   console.log("In updateCriteriaDM()");
                   if (!container) {
