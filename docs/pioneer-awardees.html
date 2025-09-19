@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VarAC Wednesday - Pioneer Awardees</title>
+    <link rel="stylesheet" href="assets/css/varACWed-style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/site.webmanifest">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8B54HBJ66J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8B54HBJ66J');
+  </script>
+
+  <body>
+    <header>
+      <img src="/assets/images/VarACWednesdayLogo-White.png" alt="VarAC Wednesday" width="300" height="auto" />
+      <p>Promoting digital comms excellence for all VarAC enthusiasts</p>
+    </header>
+
+    <div id="nav-placeholder"></div>
+    <script>
+      fetch('/navbar.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+              });
+    </script>
+
+
+    <main>
+      <div class="section">
+      <h2>VarAC Pioneer Awardees</h2>
+      <p align="center">The following operators have completed <b>at least 20 weekly VarAC Wednesday check-ins</b> during the <b>inaugural 2025 year</b> and have qualified for the <a href="pioneer-award.html" class="new-tab">Pioneer Award</a>. These operators are recognized as a VarAC Wednesday Pioneers who helped shape the rhythm and reliability of our global check-in community.</br</br></p>
+ 
+      <p align="mid">
+      <table border="1" align="center">
+        <thead>
+          <tr>
+            <th>Callsign</th>
+            <th>Operator</th>
+            <th>Qualified in week</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>AA5GW</td><td>Gary Woodrow</td><td>20</td></tr>
+          <tr><td>K3JSJ</td><td>Jason Johnson</td><td>20</td></tr>
+          <tr><td>WC2F</td><td>Miguel Orama</td><td>20</td></tr>
+        </tbody>
+      </table>
+      </p>
+      </br>
+      <p>
+      📅 Final Count Begins December 31, 2025</br>
+      Make sure your check-ins are logged and verified on the <a href="/lastWeekResults.html#historic" class="new-tab">www.varacwednesday.net RESULTS PAGE!</a></br></br>
+      
+      Early in 2026, we'll have a form on varacwednesday.net where you can apply for the award by simply entering your call , whether you'd like A4 or 8.5"X11" and the email address for sending the certificate. All VarAC Wednesday certificates come as a PDF and are "print your own."
+
+      </br></br>
+      Mark (KB0US)</br>
+      Jason (K3JSJ)</br>
+      </p>
+      </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('footer.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+              });
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+              // Select all links with class 'new-tab'
+              document.querySelectorAll('a.new-tab').forEach(function(link) {
+                      link.addEventListener('click', function (e) {
+                              e.preventDefault();
+                              window.open(link.href, '_blank');
+                            });
+                    });
+            });
+
+    </script>
+
+  </body>
+</html>
+
