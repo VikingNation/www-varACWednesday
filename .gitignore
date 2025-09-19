@@ -1,0 +1,10 @@
+# Execute any temp files
+*.un~
+*.swp
+
+# Exclude output files from processing weekly check-ins
+callsignSummary.txt
+checkinTotals.csv
+checkins.csv
+new_users_by_week.txt
+
