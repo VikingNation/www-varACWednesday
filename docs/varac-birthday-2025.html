@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VarAC Wednesday - Happy Birthday VarAC!</title>
+    <link rel="stylesheet" href="assets/css/varACWed-style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/site.webmanifest">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8B54HBJ66J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8B54HBJ66J');
+  </script>
+
+  <body>
+    <header>
+      <img src="/assets/images/VarACWednesdayLogo-White.png" alt="VarAC Wednesday" width="300" height="auto" />
+      <p>Promoting digital comms excellence for all VarAC enthusiasts</p>
+    </header>
+
+    <div id="nav-placeholder"></div>
+    <script>
+      fetch('/navbar.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+              });
+    </script>
+
+
+    <main>
+      <h2>🎉 Celebrate the Power of VarAC — and a Special Birthday Surprise!</h2>
+
+      <p>VarAC Wednesday continues to grow into one of the most vibrant digital nets in amateur radio — and it’s all thanks to <strong>YOU</strong>, the operators who show up week after week with passion, precision, and plenty of signal reports. Whether you're checking in from a cozy shack in the Midwest or a windswept hilltop in Europe, you're part of a global wave of digital excellence.</p>
+
+      <p>At the heart of it all is the VarAC program itself — a powerful, elegant tool that transforms the way we connect. From robust message handling to real-time QSO flexibility, VarAC empowers operators to communicate with clarity, reliability, and a touch of magic. It’s not just software — it’s a movement.</p>
+
+      <h3>🎂 October 8th Check-In = Birthday Certificate!</h3>
+
+      <p>To celebrate the birthday of VarAC, anyone who checks in on <strong>October 8th</strong> will receive a <strong>special commemorative certificate</strong> — perfect for posting on your QRZ page, sharing with your club, or simply framing as a badge of honor. This one-time certificate marks your participation in a milestone moment for the VarAC community.</p>
+
+      <h3>🙏 A Huge Thank You to Irad Deutsch, 4Z1AC</h3>
+
+      <p>None of this would be possible without the brilliant mind behind VarAC: <strong>Irad Deutsch, 4Z1AC</strong>. His dedication, innovation, and generosity have given the amateur radio world a gift that keeps on giving. From all of us at VarAC Wednesday — thank you, Irad, for making digital radio more accessible, more fun, and more meaningful.</p>
+
+      <p>So mark your calendars, prep your macros, and get ready to check in on October 8th. Let’s make this birthday net one for the logbooks!</p>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('footer.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+              });
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+              // Select all links with class 'new-tab'
+              document.querySelectorAll('a.new-tab').forEach(function(link) {
+                      link.addEventListener('click', function (e) {
+                              e.preventDefault();
+                              window.open(link.href, '_blank');
+                            });
+                    });
+            });
+
+   </script>
+
+  </body>
+</html>
+
