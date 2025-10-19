@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VarAC Wednesday - SUPERSTATION</title>
+    <link rel="stylesheet" href="assets/css/varACWed-style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/site.webmanifest">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8B54HBJ66J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8B54HBJ66J');
+  </script>
+
+  <body>
+    <header>
+      <img src="/assets/images/VarACWednesdayLogo-White.png" alt="VarAC Wednesday" width="300" height="auto" />
+      <p>Promoting digital comms excellence for all VarAC enthusiasts</p>
+    </header>
+
+    <div id="nav-placeholder"></div>
+    <script>
+      fetch('/navbar.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+              });
+    </script>
+
+
+    <main>
+    <h2>SUPERSTATION</h2>
+    <h3>What is SUPERSTATION?</h3>
+    <p>
+    SUPERSTATION is Global VarAC Game that is played over an extended time frame. Everyone in the world participates on an equal footing.
+    </br>
+    </p>
+    <h3>Video walk-throughs</h3>
+    <p>
+    We have released walk-thru videos that provides and overview of SUPERSATION, installation instructions, and a video walk-thru of game play. We encourage everyone to watch the videos. Keep in mind software is only available to beta-testers at this time.
+  <h4>SUPERSTATION - Introduction</h4>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/4VxE79EnZA8?si=Hb1ePE5T6eEvKN8S" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </br>
+    <h4>SUPERSTATION - Installation guide</h4>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/u4R1JJtF5nM?si=mumRue8a6lWtBkx0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h4>SUPERSTATION - Game play walk-through</h4>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/sGTQp2nOCxw?si=iVpaE1KeVB3yoRCW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    <h4>SUPERSTATION - Beta testing closing remarks</h4>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/8sdIqQYg4Uk?si=xKfMTxgHeQUO-0qz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    </p>
+
+    <h3>Goals of SUPERSATION</h3>
+    <p>
+    The purpose of the SUPERSTATION game is to increase the number of VarAC QSOs and to encourage more DX activity. A typical game will run over multiple weeks although a game can be run at any length.</br></br>
+    SUPERSTATION is different from any other amateur radio “contest.” There is an element of a card &amp; dice game, promoting QSOs that are more than simple exchanges, and demonstrating the DX capabilities of the mode. All amateurs around the world are invited to participate.
+    </br></br>
+    SUPERSTATION is integrated into VarAC via the VarAC.db file allowing SUPERSTATION to read information about contacts you've made. The game does not use beacons in any way. But we do use Broadcast. Check-out the walk-through videos above to see details how the Broadcast feature is used by SUPERSTATION.
+    </br></br>
+    <h3>Software Requirements</h3>
+    <p>SUPERSTATION runs on a Windows 10 or 11 computer. SUPERSTATION runs as a single executable. You must have at least VarAC version 12.0.</p>
+    
+    <h3>Beta Test</h3>
+    <p>
+    We are currently beta-testing SUPERSTATION and software is only available to the testers. We plan to release the software to the public in November.
+    </br>
+    We would like a few more beta testers and if you're interested, email varacwednesday at gmail.com .
+    </br></br>
+
+    73,</br>
+    Mark KB0US</br>
+    Jason K3JSJ
+    </p>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('footer.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+              });
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+              // Select all links with class 'new-tab'
+              document.querySelectorAll('a.new-tab').forEach(function(link) {
+                      link.addEventListener('click', function (e) {
+                              e.preventDefault();
+                              window.open(link.href, '_blank');
+                            });
+                    });
+            });
+
+    </script>
+  </body>
+</html>
+
