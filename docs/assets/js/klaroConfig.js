@@ -70,10 +70,21 @@ var klaroConfig = {
     },
     {
       name: 'youtube',
-      purposes: ['video'],
+      purposes: ['video', 'external_media'],
       cookies: [],
       contextualConsentOnly: true,
+      description: 'We use YouTube to host videos and cookies are used to track information on videos being watched',
       onlyOnce: true
-    }
+    },
+    {
+        name: 'google-maps',
+        title: 'Google Maps',
+        purposes: ['external_media'], 
+        
+        // Set this to true to enable the content block/wrapper
+        contextualConsentOnly: true, 
+        
+        description: 'We use Google Maps to display user check-in information, which requires loading external content and may set cookies for functionality and data analysis.',
+    }   
   ]
 };
