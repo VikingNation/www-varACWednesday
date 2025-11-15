@@ -44,7 +44,7 @@ var klaroConfig = {
             }
         ],
 
-        description: 'Enables core functionality such as user sessions, login state, and storing your consent preferences.',
+        description: 'Enables core functionality such as user sessions, Contact form, Award applications, login state, and storing your consent preferences.',
 
         // Since it's required, optOut and onlyOnce are often set to true for safety
         default : true,
