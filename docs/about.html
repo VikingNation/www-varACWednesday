@@ -9,16 +9,20 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
     <link rel="manifest" href="/assets/images/site.webmanifest">
-
+    <script type="text/javascript" src="/assets/js/klaroConfig.js"></script>
+    <script defer type="text/javascript" src="https://cdn.kiprotect.com/klaro/latest/klaro.js"></script>
   </head>
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8B54HBJ66J"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-8B54HBJ66J');
-  </script>
+
+  <!-- Klaro will only activate this if the user consents to "google-analytics" -->
+  <script type="text/plain" data-type="application/javascript" data-name="google-analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-8B54HBJ66J"></script>
+
+      <script type="text/plain" data-type="application/javascript" data-name="google-analytics">
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-8B54HBJ66J');
+      </script>
 
   <body>
 
@@ -40,6 +44,7 @@
     </script>
 
     <main>
+
       <div id="background" class="section">
         <h2>What is VarAC Wednesday?</h2>
         <p>VarAC Wednesday is a weekly amateur radio digital net where users check-in by sending a message via a station providing EMAIL gateway service.</p>

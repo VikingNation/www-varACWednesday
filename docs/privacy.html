@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VarAC Wednesday - Privacy Policys</title>
+    <link rel="stylesheet" href="assets/css/varACWed-style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/site.webmanifest">
+    <script type="text/javascript" src="/assets/js/klaroConfig.js"></script>
+    <script defer type="text/javascript" src="https://cdn.kiprotect.com/klaro/latest/klaro.js"></script>
+
+  </head>
+  <!-- Klaro will only activate this if the user consents to "google-analytics" -->
+  <script type="text/plain" data-type="application/javascript" data-name="google-analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-8B54HBJ66J"></script>
+
+  <script type="text/plain" data-type="application/javascript" data-name="google-analytics">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8B54HBJ66J');
+  </script>
+  <body>
+    <header>
+      <img src="/assets/images/VarACWednesdayLogo-White.png" alt="VarAC Wednesday" width="300" height="auto" />
+      <p>Promoting digital comms excellence for all VarAC enthusiasts</p>
+    </header>
+
+    <div id="nav-placeholder"></div>
+    <script>
+      fetch('/navbar.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+              });
+    </script>
+
+
+    <main>
+      <h1>Privacy & Cookie Policy</h1>
+
+      <p align="left">VarAC Wednesday is committed to protecting your privacy and ensuring transparency in how we use data. 
+      This policy explains how cookies, user information, and participation data are handled on our website 
+      (<a href="https://www.varacwednesday.net">varacwednesday.net</a>), during weekly net activities, operating events, and sponsored contests.</p>
+
+      <h2>Use of Cookies</h2>
+      <p align="left">We use cookies to improve site functionality, track participation, and monitor file downloads. 
+      Cookies are small text files stored on your device. They help us provide secure access to resources 
+      and understand how visitors engage with the site.</p>
+
+      <ul align="left">
+        <li><strong>Essential cookies:</strong> Required for the site to function properly.</li>
+        <li><strong>Analytics cookies:</strong> Used to track participation, measure engagement, and monitor file download activity.</li>
+      </ul>
+
+      <p align="left">You can manage your cookie preferences at any time using the cookie settings link provided on the site. 
+      Non-essential cookies will not be set unless you opt in.</p>
+
+      <h2>User Information</h2>
+      <p align="left">We collect only the minimum necessary information to support participation and community engagement. 
+      This may include operator callsigns, download activity, and preferences. Personal data is never sold or 
+      shared with third parties without explicit consent.</p>
+
+      <h2>Participation in the Weekly Net</h2>
+      <p align="left">By checking in to the VarAC Wednesday net, you acknowledge and consent to the publication of limited 
+      participation details necessary for community engagement and transparency. Specifically, we may publish:</p>
+
+      <ul align="left">
+        <li>Your callsign (as provided during check-in).</li>
+        <li>Your check-in string.</li>
+        <li>The gateway station used (the VarAC relay through which your check-in was received).</li>
+        <li>The date and time of your check-in.</li>
+        <li>The location of your station (either provided directly by you via GPS or determined through publicly available amateur radio databases such as QRZ.com).</li>
+      </ul>
+      <p align="left">Information is published on our website (<a href="/" class="new-tab">https://www.varacwednesday.net</a>), on the <a href="https://www.facebook.com/groups/varahf" class="new-tab">"VARA operators - Digital mode for HF radio"</a> Facebook group, and on the VarAC Community Telegram channel. Information is also published on the <a href="https://www.youtube.com/@K3JSJ" class="new-tab">Ham Radio community YouTube channel</a>. Information may also be published on additional online or print media publications related to amature radio.</p>
+
+      <p align="left">This information is published to support the goals of the VarAC Wednesday community, including 
+      participation tracking, awards, and fostering global amateur radio connections.</p>
+
+      <h2>File Downloads</h2>
+      <p align="left">Downloadable resources (such as instructions, training materials, or cryptographic keys) are provided securely. 
+      Cookies may be used to track file downloads, measure engagement, and ensure resource integrity. 
+      Users can verify authenticity of files (e.g., GnuPG public key and digital signatures of files) as part of our transparency commitment. Links GnuPG public signatures are found on the footer of this website.</p>
+
+      <h2>Your Rights</h2>
+      <p align="left">Under GDPR and similar regulations, you have the following rights:</p>
+      <ul align="left">
+        <li>Opt out of non-essential cookies at any time.</li>
+        <li>Request access, correction, or deletion of your personal data.</li>
+        <li>Withdraw consent as easily as it is given.</li>
+        <li>Request removal of published participation data, subject to community logging requirements.</li>
+      </ul>
+
+      <p>Our weekly nets, operating events, and contests are time bound and users are required to provide requested information during those times. Under no circumstance shall rights under GDPR or similar regulations result in requiring the operator of those events or this website to correct information or amend records to reflect information not furshied by operators during weekly nets, operating events, and contests.</p> 
+      <h2>Contact</h2>
+      <p align="left">If you have questions or requests regarding this policy, please contact the VarAC Wednesday organizers 
+      through the contact information provided on the website.</p>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('footer.html')
+        .then(res => res.text())
+        .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+              });
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+              // Select all links with class 'new-tab'
+              document.querySelectorAll('a.new-tab').forEach(function(link) {
+                      link.addEventListener('click', function (e) {
+                              e.preventDefault();
+                              window.open(link.href, '_blank');
+                            });
+                    });
+            });
+
+    </script>
+
+  </body>
+</html>
+
