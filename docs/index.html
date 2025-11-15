@@ -12,7 +12,6 @@
     <script type="text/javascript" src="/assets/js/klaroConfig.js"></script>
     <script defer type="text/javascript" src="https://cdn.kiprotect.com/klaro/latest/klaro.js"></script>
 
-  </head>
   <!-- Klaro will only activate this if the user consents to "google-analytics" -->
   <script type="text/plain" data-type="application/javascript" data-name="google-analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-8B54HBJ66J"></script>
 
@@ -20,9 +19,11 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-8B54HBJ66J');
+    gtag('config', 'G-8B54HBJ66J', {
+        'allow_ad_personalization_signals': false
+        });
   </script>
-
+  </head>
   <body>
     <header>
       <img src="/assets/images/VarACWednesdayLogo-White.png" alt="VarAC Wednesday" width="300" height="auto" />
