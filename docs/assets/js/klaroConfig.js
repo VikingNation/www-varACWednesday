@@ -5,6 +5,7 @@ var klaroConfig = {
   styling: {
     theme: ['light', 'bottom']
   },
+  cookieExpiresAfterDays: 365,
   translations: {
     en: {
       consentModal: {
@@ -26,6 +27,33 @@ var klaroConfig = {
     }
   },
   services: [
+      {
+        name: 'site_essentials',
+        title: 'Site Essentials & Functionality',
+        purposes: ['required'], // <-- Links this service to the mandatory 'required' purpose
+
+        // This array documents the cookies set by this service
+        cookies: [
+            // The Klaro consent cookie itself (Crucial to include!)
+            {
+                pattern: /klaro/i,
+                path: '/',
+                // Klaro often uses the current domain by default
+                expiration: '365 Days',
+                service_name: 'site_essentials',
+            }
+        ],
+
+        description: 'Enables core functionality such as user sessions, login state, and storing your consent preferences.',
+
+        // Since it's required, optOut and onlyOnce are often set to true for safety
+        default : true,
+        optOut: true,
+        onlyOnce: true,
+    },
+
+
+
     {
       name: 'google-analytics',
       purposes: ['analytics'],
