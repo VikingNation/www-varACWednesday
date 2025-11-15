@@ -11,6 +11,7 @@
     <link rel="manifest" href="/assets/images/site.webmanifest">
     <script type="text/javascript" src="/assets/js/klaroConfig.js"></script>
     <script defer type="text/javascript" src="https://cdn.kiprotect.com/klaro/latest/klaro.js"></script>
+    <script defer type="text/javascript" src="https://cdn.kiprotect.com/klaro/latest/klaao-embed.js"></script>
 
   </head>
   <!-- Klaro will only activate this if the user consents to "google-analytics" -->
@@ -23,7 +24,7 @@
     gtag('config', 'G-8B54HBJ66J', {
           'allow_google_signals': false,   // disables Google signals 
           'allow_ad_personalization_signals': false
-    });
+        });
     // Track file downloads
     document.addEventListener('DOMContentLoaded', function() {
           document.querySelectorAll('a[href$=".pdf"], a[href$=".zip"], a[href$=".docx"], a[href$=".csv"]').forEach(function(link) {
@@ -59,119 +60,123 @@
     <main>
       <div id="check-in-generator" class="section">
         <h2>Video walk-thru of Check-in Template Generator</h2>
-        <p>Use our <a href="checkInGenerator.html" class="new-tab">Check-in Template Generator</a> tool to make check-ins a breeze.  Check-out the video tutorial below</br></br> 
+        <p>Use our <a href="checkInGenerator.html" class="new-tab">Check-in Template Generator</a> tool to make check-ins a breeze.  Check-out the video tutorial below</br></br></p>
         <div id="video-frame" align="center">
           <iframe width="560" height="315"
-                              src="https://www.youtube.com/embed/Vu3j_ioLzhQ"
-                              title="VarAC Check-in generator walk-thru" frameborder="0"
-                                                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                                         allowfullscreen>
+                              data-src="https://www.youtube.com/embed/Vu3j_ioLzhQ"
+                              data-name="youtube"
+                              title="VarAC Check-in generator walk-thru"
+                              frameborder="0"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowfullscreen>
           </iframe>
         </div>
-      </div>
 
-      <div class="divider"></div>
-      <div id="gpsFormatChecker" class="section">
-        <h2>Video walk-thru of GPS format checker tool</h2>
-        <p>User our <a href="gpsChecker.html">GPS Coordinate Format Checker</a> tool to verify your GPS coordinates are formated in the required format.</br></br></p>
-        <div id="video-frame2" align="center">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/Zfrx3niA1lM" title="VarAC Wed GPS format check tool" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-        </div>
-      </div>
-
-      <div class="divider"></div>
-      <div id="VarACBot" class="section">
-        <h2>VarAC Notifiction Extension</h2>
-        <p>Sergio Dias's (CR7AXH) VarAC extension allows you to receive real-time alerts on your Telegram account. With Mark Rosneck's (KB0US) <a href="/pdf/VarAC_Bot_App_Note.pdf" class="new-tab">"VarAC Notification Extension with VarAC Bot training"</a>, you'll have your VarAC Notifications in your Telegram account in no time!</p>
-      </div>
-
-      <div class="divider"></div>
-      <div id="StaticGPS" class="section">
-        <h2>VarAC GPS Setup (Static location)</h2>
-        <p>VarAC Wednesday now extracts GPS coordinates from check-in message to plot on the check-in results map. Check out Jason Johnson's (K3JSJ) <a href="/pdf/VarAC_GPS_Setup_Static_Location.pdf" class="new-tab">"VarAC GPS Setup (static location) training"</a>, to learn how to setup VarAC for GPS support.  You will learn how to find your GPS coordinate, update VarAC settings, and update your canned message.<p>
-        <div id="video-frame" align="center">
-          <iframe width="560" height="315"
-                              src="https://www.youtube.com/embed/Gx_lfl1eec4?si=BWn_ltw5kTnJzNQC"
-                              title="VarAC Wed - Now with GPS check-ins!" frameborder="0"
-                                                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                                                 allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-
-     <div class="divider"></div>
-     <div id="gpsWorkingAid" class="section">
-       <h2>What GPS formats do we accept?</h2>
-       <p>Please review the following PDF for details on GPS formats we accept for your weekly check-in: <a href="/pdf/VarAC_Wed_GPS_working_aid.pdf" class="new-tab">VarAC Wednesday GPS working-aid</a>.</p>
-     </div>
-
-      <div class="divider"></div>
-      <div id="whereami" class="section">
-        <h2>Where am I on the check-in map?</h2>
-        <p>We've received a few questions from operators wondering why they don’t appear on the VarAC Wednesday map. If that’s you—or you're just curious—check out this helpful video below:
-        <div id="video-frame" align="center">
-          <iframe width="560" height="315"
-                              src="https://www.youtube.com/embed/btaLe4K7iho?si=h3sxQ0PNFd7EfvJ_"
-                              title="VarAC Wed - Why am I missing from the map?" frameborder="0"
-                                                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                                                 allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-      <div id="top10-tips" class="section">
-        <h2>Top 10 Tips for new users</h2>
-        <p>New to VarAC or want to learn more about best practices? Check-out our <a href="/pdf/Top-10-Things-for-New-Users.pdf" class="new-tab">VarAC Top 10 for New Users</a></p>
-      </div>
-
-      <div class="divider"></div>
-      <div id="voice-announcements" class="section">
-        <h2>Default Speaker Setting in Windows</h2>
-        <p>It is important to properly setup your default speaker settings in Windows. Voice announcements are a great way to hear what is going on with VarAC. They are not so great when they are transmitted over the air and cause QRM for fellow operators. Check-out our <a href="/pdf/VarAC-Narrator-Transmitted.pdf" class="new-tab">"Are you sending voice annoncements over the air?"</a> training and you will be enjoying those VarAC announcements without transmitting them over the air.</p>
-      </div>
-
-      <div class="divider"></div>
-      <div id="pskreporter" class="section">
-        <h2>Be a VarAC PSKreporter champion!</h2>
-        <p>PSKreporter is a great tool to see what stations are on the air and who is receiving your signal. Did you know VarAC allows you to report what VarAC stations you are hearing? Check-out our <a href="/pdf/PSKReporter-for-VarAC-Users.pdf" class="new-tab">PSKReporter for VarAC Users</a> to become a champion at using this tool!</p>
-
-      </div>
-
-      <div class="divider"></div>
-      <div id="minimize-disconnects" class="section">
-        <h2>Minimize Vara disconnects</h2>
-        <p>There is nothing worse than experiencing a disconnect during a VarAC session. Check-out our <a href="/pdf/Minimizing-VarAC-Disconnects.pdf" class="new-tab">Minimizing disconnects</a> training to help optimize your station's setup.</p>
-      </div>
-
-      <div class="divider"></div>
-      <div id="vara-meter" class="section">
-        <h2>Can you hear me now? Optimize audio levels for your VARA modem</h2>
-        <p>Audio settings can be complicated. Check-out our <a href="/pdf/Setting-the-VARA-HF-VU-meter-Rev-1.pdf" class="new-tab">Setting VARA HF VU Meter</a> training and best practices on setting audio levels.</p>
-      </div>
-
-      <!--
         <div class="divider"></div>
-        <div id="guidance-for-gateways" class="section">
-        <h2>Guidance for VarAC Email Gateways (FCC Part 97)</h2>
-        <p>VarAC email gateways in the U.S. must comply with FCC Part 97 regulations.  Our <a href="/pdf/Are-VarAC-gateways-legal.pdf" class="new-tab">"Are VarAC gateways legal?"</a> document covers important elements of FCC Part 97 regulation that operators need to consider. Note: Please consult relevant regulation of your country for guidance on this topic.</p>
+        <div id="gpsFormatChecker" class="section">
+          <h2>Video walk-thru of GPS format checker tool</h2>
+          <p>User our <a href="gpsChecker.html">GPS Coordinate Format Checker</a> tool to verify your GPS coordinates are formated in the required format.</br></br></p>
+          <div id="video-frame2" align="center">
+            <iframe width="560" height="315" data-src="https://www.youtube.com/embed/Zfrx3niA1lM" data-name="youtube" title="VarAC Wed GPS format check tool" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+          </div>
         </div>
-      -->
 
-      <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        <div class="divider"></div>
+        <div id="VarACBot" class="section">
+          <h2>VarAC Notifiction Extension</h2>
+          <p>Sergio Dias's (CR7AXH) VarAC extension allows you to receive real-time alerts on your Telegram account. With Mark Rosneck's (KB0US) <a href="/pdf/VarAC_Bot_App_Note.pdf" class="new-tab">"VarAC Notification Extension with VarAC Bot training"</a>, you'll have your VarAC Notifications in your Telegram account in no time!</p>
+        </div>
 
-                  // Select all links with class 'new-tab'
-                  document.querySelectorAll('a.new-tab').forEach(function(link) {
-                            link.addEventListener('click', function (e) {
-                                      e.preventDefault();
-                                      window.open(link.href, '_blank');
-                                    });
-                          });
-                });
+        <div class="divider"></div>
+        <div id="StaticGPS" class="section">
+          <h2>VarAC GPS Setup (Static location)</h2>
+          <p>VarAC Wednesday now extracts GPS coordinates from check-in message to plot on the check-in results map. Check out Jason Johnson's (K3JSJ) <a href="/pdf/VarAC_GPS_Setup_Static_Location.pdf" class="new-tab">"VarAC GPS Setup (static location) training"</a>, to learn how to setup VarAC for GPS support.  You will learn how to find your GPS coordinate, update VarAC settings, and update your canned message.<p>
+          <div id="video-frame" align="center">
+            <iframe width="560" height="315"
+                                data-src="https://www.youtube.com/embed/Gx_lfl1eec4?si=BWn_ltw5kTnJzNQC"
+                                data-name="youtube"
+                                title="VarAC Wed - Now with GPS check-ins!" frameborder="0"
+                                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                                            allowfullscreen>
+            </iframe>
+          </div>
+        </div>
 
-      </script>
+        <div class="divider"></div>
+        <div id="gpsWorkingAid" class="section">
+          <h2>What GPS formats do we accept?</h2>
+          <p>Please review the following PDF for details on GPS formats we accept for your weekly check-in: <a href="/pdf/VarAC_Wed_GPS_working_aid.pdf" class="new-tab">VarAC Wednesday GPS working-aid</a>.</p>
+        </div>
+
+        <div class="divider"></div>
+        <div id="whereami" class="section">
+          <h2>Where am I on the check-in map?</h2>
+          <p>We've received a few questions from operators wondering why they don’t appear on the VarAC Wednesday map. If that’s you—or you're just curious—check out this helpful video below:
+          <div id="video-frame" align="center">
+            <iframe width="560" height="315"
+                                data-src="https://www.youtube.com/embed/btaLe4K7iho?si=h3sxQ0PNFd7EfvJ_"
+                                data-name="youtube"
+                                title="VarAC Wed - Why am I missing from the map?"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <div id="top10-tips" class="section">
+          <h2>Top 10 Tips for new users</h2>
+          <p>New to VarAC or want to learn more about best practices? Check-out our <a href="/pdf/Top-10-Things-for-New-Users.pdf" class="new-tab">VarAC Top 10 for New Users</a></p>
+        </div>
+
+        <div class="divider"></div>
+        <div id="voice-announcements" class="section">
+          <h2>Default Speaker Setting in Windows</h2>
+          <p>It is important to properly setup your default speaker settings in Windows. Voice announcements are a great way to hear what is going on with VarAC. They are not so great when they are transmitted over the air and cause QRM for fellow operators. Check-out our <a href="/pdf/VarAC-Narrator-Transmitted.pdf" class="new-tab">"Are you sending voice annoncements over the air?"</a> training and you will be enjoying those VarAC announcements without transmitting them over the air.</p>
+        </div>
+
+        <div class="divider"></div>
+        <div id="pskreporter" class="section">
+          <h2>Be a VarAC PSKreporter champion!</h2>
+          <p>PSKreporter is a great tool to see what stations are on the air and who is receiving your signal. Did you know VarAC allows you to report what VarAC stations you are hearing? Check-out our <a href="/pdf/PSKReporter-for-VarAC-Users.pdf" class="new-tab">PSKReporter for VarAC Users</a> to become a champion at using this tool!</p>
+
+        </div>
+
+        <div class="divider"></div>
+        <div id="minimize-disconnects" class="section">
+          <h2>Minimize Vara disconnects</h2>
+          <p>There is nothing worse than experiencing a disconnect during a VarAC session. Check-out our <a href="/pdf/Minimizing-VarAC-Disconnects.pdf" class="new-tab">Minimizing disconnects</a> training to help optimize your station's setup.</p>
+        </div>
+
+        <div class="divider"></div>
+        <div id="vara-meter" class="section">
+          <h2>Can you hear me now? Optimize audio levels for your VARA modem</h2>
+          <p>Audio settings can be complicated. Check-out our <a href="/pdf/Setting-the-VARA-HF-VU-meter-Rev-1.pdf" class="new-tab">Setting VARA HF VU Meter</a> training and best practices on setting audio levels.</p>
+        </div>
+
+        <!--
+          <div class="divider"></div>
+          <div id="guidance-for-gateways" class="section">
+          <h2>Guidance for VarAC Email Gateways (FCC Part 97)</h2>
+          <p>VarAC email gateways in the U.S. must comply with FCC Part 97 regulations.  Our <a href="/pdf/Are-VarAC-gateways-legal.pdf" class="new-tab">"Are VarAC gateways legal?"</a> document covers important elements of FCC Part 97 regulation that operators need to consider. Note: Please consult relevant regulation of your country for guidance on this topic.</p>
+          </div>
+        -->
+
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+
+                      // Select all links with class 'new-tab'
+                      document.querySelectorAll('a.new-tab').forEach(function(link) {
+                                  link.addEventListener('click', function (e) {
+                                              e.preventDefault();
+                                              window.open(link.href, '_blank');
+                                            });
+                                });
+                    });
+
+        </script>
 
     </main>
     <div id="footer-placeholder"></div>

@@ -14,6 +14,15 @@ var klaroConfig = {
       acceptAll: 'Accept all',
       acceptSelected: 'Accept selected',
       decline: 'Decline'
+    },
+    youtube: {
+      description: 'Embedded YouTube videos'
+    },
+    googlemaps: {
+      description: 'Embedded Google Maps'
+    },
+    googleanalytics: {
+      description: 'Anonymous usage statistics via Google Analytics'
     }
   },
   services: [
@@ -30,6 +39,13 @@ var klaroConfig = {
       required: false,      // must be opt-in, not required
       optOut: false,        // GDPR requires opt-in, not opt-out
       onlyOnce: true        // ensures script runs only once after consent
+    },
+    {
+      name: 'youtube',
+      purposes: ['video'],
+      cookies: [],
+      contextualConsentOnly: true,
+      onlyOnce: true
     }
   ]
 };
