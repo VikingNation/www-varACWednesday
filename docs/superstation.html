@@ -163,7 +163,7 @@
         <p>
         A special thank you to:</br>
         </p>
-         <ul align="left">
+         <ul style="text-align: left;">
           <li>Jürgen (OE6MNE) for the translation into German</li>
           <li>Pat (ON2AD) for the translation into Dutch.</li>
           <li>Ivan (KP3IV) for the translation into Spanish</li>
@@ -182,10 +182,13 @@
 
       </br></br>
       <h2>SUPERSTATION - Bug reports</h2>
-      <p>Please use our <a href="contact.html" class="new-tab">contact form</a> to report any bugs. The list of known bugs as of <b>Sunday November 16, 23:30 EST</b> appears below.
+      <p>Please use our <a href="contact.html" class="new-tab">contact form</a> to report any bugs. The list of known bugs as of <b>Monday November 24, 03:45 UTC</b> appears below.
 
       <ul style="text-align: left;">
-        <li>A contact must be greater than ten (10) minutes and human-to-human in order for it to be considered as a distance multiplier. If the duration is greather than 10 minutes and QSO is human-to-machine the distance is updating to the distance for the QSO.  This is bug.  SOLUTION: Re-load SUPERSTATION and it will properly rescore.  The bug will be fixed in a future release</li>
+        <li>RESOLVED: A new QSO Scorer has been released. We received reports of Human-to-human QSOs being scored as human-to-machine.  Mark and I anticipted as we have released as public beta.  We have taken community input and example QSOs and a new QSO Scorer DLL was released on November 22, 2025.  See the Downloads section at the top of this page for an updated DLL to upgrade your Superstation. The README.txt in the ZIP file has full instructions on how to upgrade.</li>
+        <li>DISPLAY BUG - RESOLVE WITH RELOADING GAME: A contact must be greater than ten (10) minutes and human-to-human in order for it to be considered as a distance multiplier. If the duration is greather than 10 minutes and QSO is human-to-machine the distance is updating to the distance for the QSO.  This is bug.  SOLUTION: Re-load SUPERSTATION and it will properly rescore.  The bug will be fixed in a future release.</li>
+        <li>DISPLAY BUG - NO IMPACT TO GAMEPLAY: The available ROLL count resets to three after midnight (local time), but the user interface still shows zero.  If the a ROLL occurs after midnight the display will show two two remaining which is correct. A future release will reset the ROLL remaining count on the user interface after midnight.</li>
+        <li>SPELLING ERRORS - NO IMPACT TO GAMEPLAY: A couple of spelling errors have been reported in DEBUG log and start of game icons.  As these do not impact game play these will be fixed in a future release.</li>
       </ul>
 
       <div class="divider"></div>
@@ -218,7 +221,7 @@
         <p>SUPERSTATION beta software is digitially signed with <a href="/assets/k3jsjAtarrlDotNet_public.asc" download>K3JSJ's GNUPG</a> key.</p>
       </div>
 
-      <h3>Beta Test Wrap-up</h3>
+      <h3>Private Beta Test Wrap-up</h3>
       <p>
       Thank you to the beta-test team! Your hard work and feedback helped us find and fix bugs. Your feedback also resulted in new features in SUPERSTATION.
       </br>
