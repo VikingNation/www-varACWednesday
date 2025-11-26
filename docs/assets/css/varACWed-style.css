@@ -99,6 +99,15 @@ main p {
 	margin: 30px 0;
 }
 
+pre {
+	background-color: #f0f0f0;   /* light grey background */
+	border: 2px dashed #666;     /* dashed grey border */
+	padding: 10px;               /* space inside the box */
+	font-size: 14pt;             /* 14 point font */
+	font-family: Consolas, monospace; /* clean monospace font */
+	color: #000;                 /* black text for readability */
+}
+
 @media screen and (max-width: 640px) {
 	/* 1. Make the UL a column */
 	nav ul.navbar {

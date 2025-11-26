@@ -111,13 +111,28 @@
             <a href="https://downloads.k3jsj.net/qso_scorer-32bit-Nov22_2025.zip" 
                download 
                class="download-btn">
-              ⬇️ Download QSO Scorer Nov 22 225 Update (32-bit) 🆕
+              ⬇️ Download QSO Scorer Nov 22 2025 Update (32-bit) 🆕
             </a>
           </td>
 
         </tr>
  
       </table>
+      <section id="varac-launcher-superstation">
+      <div class="divider"></div>
+      <h3>VarAC Launcher Configuration</h3>
+      <p>A bug exists in Superstation v0.1.7.4-beta when attempting to launch using the VarAC application launcher. Superstation is not finding the QSO scorer DLL.  This will be fixed in the next release. The following is the work around to use until the next release.</p></br></br>
+      <p>VarAC can be configured to launch Superstation upon start-up.  Create a batch file called superstationLauncher.bat in the same directory as the superstation executable. The contents of the batch file should be as follows (note: make sure name of executable matches the name of the executable to launch)</br>
+      <pre style="text-align:left">
+            cd %~dp0
+            start superstation-0.1.7.4-beta.exe
+      </pre>
+      </br>
+      <p>
+      In VarAC Settings menu select Application launcher. Browse to the path for where <em>superstationLauncher.bat</em> is locationed and select that file. Next, make sure you check "Enable Application Launcher". Finally, make sure you <u>only</u> select the "Enable" is the only check-box enabled on the row with the applicaiton. Click the "SAVE AND COMPLETE" button.  Close VarAC and re-launch.  Superstation should load in the background during the VarAC load process. See scren show below for the screen shot of settings.</br></br>
+
+      <img src="/assets/images/superstation/VarAC_launcher_config_Superstation.png">
+      </p>
 
       <div class="divider"></div>
       <h3>SUPERSTATION - User guide</h3>
@@ -189,6 +204,7 @@
         <li>DISPLAY BUG - RESOLVE WITH RELOADING GAME: A contact must be greater than ten (10) minutes and human-to-human in order for it to be considered as a distance multiplier. If the duration is greather than 10 minutes and QSO is human-to-machine the distance is updating to the distance for the QSO.  This is bug.  SOLUTION: Re-load SUPERSTATION and it will properly rescore.  The bug will be fixed in a future release.</li>
         <li>DISPLAY BUG - NO IMPACT TO GAMEPLAY: The available ROLL count resets to three after midnight (local time), but the user interface still shows zero.  If the a ROLL occurs after midnight the display will show two two remaining which is correct. A future release will reset the ROLL remaining count on the user interface after midnight.</li>
         <li>SPELLING ERRORS - NO IMPACT TO GAMEPLAY: A couple of spelling errors have been reported in DEBUG log and start of game icons.  As these do not impact game play these will be fixed in a future release.</li>
+        <li>BUG WITH WORKAROUND - When Superstation is loaded using the VarAC application launcher it is not finding the QSO Scorer DLL. This is a bug and will be fixed in the next release. Please use this work around until the next release: <a href="superstation.html#varac-launcher-superstation">superstationLauncher.bat work around</a></li>
       </ul>
 
       <div class="divider"></div>
