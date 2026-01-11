@@ -1,0 +1,518 @@
+<style>
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+        .criteria {
+          margin-top: 20px;
+          display: none;
+        }
+        .criteria h3 {
+          margin-bottom: 5px;
+        }
+        .criteria ul {
+          list-style: none;
+          padding-left: 0;
+        }
+        .criteria li::before {
+          content: "❌";
+          margin-right: 10px;
+          color: red;
+        }
+        .criteria li.checked::before {
+          content: "✔";
+          color: green;
+        }
+        #map {
+          margin-top: 30px;
+          width: 100%;
+          height: 400px;
+          border: 1px solid #ccc;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+        td {
+          width: 50%;
+          border: 1px solid #ccc;
+          padding: 10px;
+          text-align: center;
+        }
+    </style>
+ 
+
+ <label for="gpsInput">GPS Coordinate:</label>
+      <input type="text" id="gpsInput" placeholder='e.g. 48.129356, 14.940682'>
+      <button onclick="checkFormat()">CHECK FORMAT</button>
+      </br></br>
+      <div id="output">
+        <table>
+          <tr>
+            <td>
+              <div class="criteria" id="results">
+              </div>
+            </td>
+            <td>
+              <div id="map"></div>
+            </td>
+        </table>
+      </div>
+
+      <script>
+
+        function checkFormat() {
+                  const input = document.getElementById("gpsInput").value.trim();
+                  const degChar = /^[^°]*$/;
+                  const gpsDDM = /(\d+)°(?:\s+)?(\d+\.\d+)(?:\s)?[NS](?:\s)?(\d+)°(?:\s+)?(\d+.\d+)(?:\s)?[EW]/;
+                  //const gpsDDM = /(\d+).*(\d+.\d)[NS](?:\s)?/;
+                  const gpsDM = /([+-]?\d+(?:\.\d+)?)\s*,\s*([+-]?\d+(?:\.\d+)?)/;
+                  const gpsDMS = /^(?<latDeg>\d{1,3})(?<latDegSym>°)?\s*(?<latMin>\d{1,2})(?<latMinSym>')?\s*(?<latSec>\d{1,2}(?:\.\d+)?)(?<latSecSym>")?\s*(?<latHem>[NS])\s+(?<lonDeg>\d{1,3})(?<lonDegSym>°)?\s*(?<lonMin>\d{1,2})(?<lonMinSym>')?\s*(?<lonSec>\d{1,2}(?:\.\d+)?)(?<lonSecSym>")?\s*(?<lonHem>[EW])/;
+
+                  const matchDM = input.match(gpsDM);
+                  const matchNotDegSym = input.match(degChar); 
+                  if ((matchDM) && (matchNotDegSym)) {
+                            console.log("Found: Matched Degree decimal format GPS coordinate");
+                            updateCriteriaDM();
+                            checkFormatDM();
+                  } else {
+
+                              const matchDDM = input.match(gpsDDM);
+                              if (matchDDM) {
+                                console.log("Found:  Matched Degree decimal minute (DDM) format GPS coorinate");
+
+                                updateCriteriaDDM();
+                                checkFormatDDM();
+                              } else {
+
+                                        // Do we have Degree Minute Second format?
+                                      const matchDMS = input.match(gpsDMS);
+                                      if (matchDMS) {
+                                          console.log("Found:  Matched Degree Decimal Minute (DMS) format GPS coorinate");
+
+                                          updateCriteriaDMS();
+                                          checkFormatDMS();
+                                      } else {
+                                                console.log("Error: Did not find valid format");
+                                                updateTraining();
+                                                checkFormatTraining();
+                                              }
+
+                      }
+                    }
+                }
+
+        function checkFormatTraining() {
+                   // Show criteria section
+                  const resultsDiv = document.getElementById("results");
+                  resultsDiv.style.display = "block";
+                }
+        function updateTraining() {
+                  const container = document.getElementById('results');
+                  console.log("In updateCriteriaDM()");
+                  if (!container) {
+                            console.error("Element with id 'results' not found.");
+                            return;
+                          }
+
+                  container.innerHTML = `
+                  <h2>Error: Did not find accepted format</h2>
+                  <p>Please review the following PDF for details on GPS formats we accept for your weekly check-in: <a href="https://docs.google.com/uc?export=download&id=170g3kJmW04dEi8j2I69cwJdATrrXdhjZ" class="new-tab">VarAC Wednesday GPS working-aid</a>.</p>
+                `;
+
+                 
+                }
+        function updateCriteriaDMS() {
+                  
+                  const container = document.getElementById('results');
+                  console.log("In updateCriteriaDM()");
+                  if (!container) {
+                            console.error("Element with id 'results' not found.");
+                            return;
+                          }
+
+                  container.innerHTML = `
+       <h2>Found Degree Minute Second format</h2>
+       <h3>Latitude Checks</h3>
+       <ul id="latCriteria">
+       <li id="latDegrees">Degrees provided</li>
+       <li id="latDegreeSymbol">Degree symbol provided</li>
+       <li id="latMinutes">Minutes provided</li>
+       <li id="latMinuteSymbol">Minutes symbol provided</li>
+       <li id="latSeconds">Seconds provided</li>
+       <li id="latSecondsSymbol">Seconds symbol provided</li>
+       <li id="latHemisphere">Hemisphere provided</li>
+       <li id="latRange">Latitude in valid range (0 to 90)</li>
+       </ul>
+       <h3>Longitude Checks</h3>
+       <ul id="lonCriteria">
+       <li id="lonDegrees">Degrees provided</li>
+       <li id="lonDegreeSymbol">Degree symbol provided</li>
+       <li id="lonMinutes">Minutes provided</li>
+       <li id="lonMinuteSymbol">Minutes symbol provided</li>
+       <li id="lonSeconds">Seconds provided</li>
+       <li id="lonSecondsSymbol">Seconds symbol provided</li>
+       <li id="lonHemisphere">Hemisphere provided</li>
+       <li id="lonRange">Latitude in valid range (0 to 90)</li>
+       </ul>
+       <h3>Delimiter Check</h3>
+       <ul id="delCriteria">
+       <li id="delimiter">Space delimiter between Latitude and Longitude</li>
+       </ul>
+       `;
+                }
+
+
+        function checkFormatDMS() {
+
+                  const input = document.getElementById("gpsInput").value.trim();
+                  const gpsDMS = /^(?<latDeg>\d{1,3})(?<latDegSym>°)?\s*(?<latMin>\d{1,2})(?<latMinSym>')?\s*(?<latSec>\d{1,2}(?:\.\d+)?)(?<latSecSym>")?\s*(?<latHem>[NS])(?<delimeter>\s+)(?<lonDeg>\d{1,3})(?<lonDegSym>°)?\s*(?<lonMin>\d{1,2})(?<lonMinSym>')?\s*(?<lonSec>\d{1,2}(?:\.\d+)?)(?<lonSecSym>")?\s*(?<lonHem>[EW])/;
+
+                  // Show criteria section
+                  const resultsDiv = document.getElementById("results");
+                  resultsDiv.style.display = "block";
+
+                  // Reset all checklist items
+                  const allChecks = resultsDiv.querySelectorAll("li");
+                  allChecks.forEach(item => item.classList.remove("checked"));
+
+                  match = input.match(gpsDMS);
+                  console.log(match);
+                  if (match?.groups) {
+                            const {
+                                      latDeg, latDegSym, latMin, latMinSym, latSec, latSecSym, latHem, delimeter,
+                                      lonDeg, lonDegSym, lonMin, lonMinSym, lonSec, lonSecSym, lonHem
+                                    } = match.groups;
+
+
+                            const htmlSafeLatMinSym = latMinSym.replace(/'/g, "&#39;");
+                            const htmlSafeLonMinSym = lonMinSym.replace(/'/g, "&#39;");
+
+
+                            console.log("Latitude:", latDeg, latDegSym ?? '', latMin, latMinSym ?? '', latSec, latSecSym ?? '', latHem);
+                            console.log("Longitude:", lonDeg, lonDegSym ?? '', lonMin, lonMinSym ?? '', lonSec, lonSecSym ?? '', lonHem);
+
+                            // Run lattitude checks
+                            toggleCheck("latDegrees", (latDeg.length >= 1 ));
+                            toggleCheck("latDegreeSymbol", (latDegSym === '°'));
+
+                            toggleCheck("latMinutes", (latMin.length >= 1 ));
+                            if (htmlSafeLatMinSym === "&#39;") {
+                                      toggleCheck("latMinuteSymbol", true);
+                                    }
+
+                            toggleCheck("latSeconds", (latSec.length >= 1 ));
+                            toggleCheck("latSecondsSymbol", (latSecSym === '"'));
+                            toggleCheck("latHemisphere", (latHem.length >= 1 ));
+
+                            toggleCheck("delimiter", (delimeter.length >= 1));
+                            // Run longitude checks
+                            toggleCheck("lonDegrees", (lonDeg.length >= 1 ));
+                            toggleCheck("lonDegreeSymbol", (lonDegSym === '°' ));
+
+                            toggleCheck("lonMinutes", (lonMin.length >= 1 ));
+                            if (htmlSafeLonMinSym === "&#39;") {
+                                      toggleCheck("lonMinuteSymbol", true);
+                                    }
+
+
+                            toggleCheck("lonSeconds", (lonSec.length >= 1 ));
+                            toggleCheck("lonSecondsSymbol", (lonSecSym === '"' ));
+                            toggleCheck("lonHemisphere", (lonHem.length >= 1 ));
+
+
+                            lat = parseFloat(latDeg) + parseFloat(latMin)/60 + parseFloat(latSec)/3600;
+                            lon = parseFloat(lonDeg) + parseFloat(lonMin)/60 + parseFloat(lonSec)/3600;
+
+                            if (latHem === 'S') {
+                                      lat = -1.0*lat;
+                                    }
+
+                            if (lonHem === 'W') {
+                                      lon = -1.0*lon;
+                                    }
+
+                            console.log("DMS Lat/Lon: " + lat + " " + lon);
+
+                            toggleCheck("latRange", !isNaN(lat) && lat >= -90 && lat <= 90);
+                            toggleCheck("lonRange", !isNaN(lon) && lon >= -180 && lon <= 180);
+
+
+                          }
+
+                           // Plot on map
+                            const mapDiv = document.getElementById("map");
+                            mapDiv.innerHTML = ""; // 🔄 Clear previous map
+                            if (!(lat == -1) && ! (lon == -1) && allCriteriaChecked()  ) {
+                                      const mapFrame = document.createElement("iframe");
+                                      mapFrame.width = "100%";
+                                      mapFrame.height = "400";
+                                      mapFrame.style.border = "0";
+                                      mapFrame.loading = "lazy";
+                                      mapFrame.allowFullscreen = true;
+                                      mapFrame.referrerPolicy = "no-referrer-when-downgrade";
+                                      mapFrame.src = `https://www.google.com/maps?q=${lat},${lon}&output=embed`;
+                                      mapDiv.appendChild(mapFrame);
+                                    }
+
+
+                } 
+
+        function updateCriteriaDM() {
+                  const container = document.getElementById('results');
+                  console.log("In updateCriteriaDM()");
+                  if (!container) {
+                            console.error("Element with id 'results' not found.");
+                            return;
+                          }
+
+                  container.innerHTML = `
+       <h2>Found Decimal Degree format</h2>
+       <h3>Latitude Checks</h3>
+       <ul id="latCriteria">
+       <li id="latDegrees">Degrees provided</li>
+       <li id="latRange">Latitude in valid range (-90 to 90)</li>
+       </ul>
+       <h3>Longitude Checks</h3>
+       <ul id="lonCriteria">
+       <li id="lonDegrees">Degrees provided</li>
+       <li id="lonRange">Longitude in valid range (-180 to 180)</li>
+       </ul>
+       <h3>Delimiter Check</h3>
+       <ul id="delCriteria">
+       <li id="delimiter">Comma delimiter between Latitude and Longitude</li>
+       </ul>
+       `;
+                }
+
+
+        function checkFormatDM() {
+
+                  const input = document.getElementById("gpsInput").value.trim();
+
+                  const gpsDM = /([+-]?\d+(?:\.\d+)?)\s*(,)\s*([+-]?\d+(?:\.\d+)?)/;
+                  match_dm = input.match(gpsDM);
+
+                  // Show criteria section
+                  const resultsDiv = document.getElementById("results");
+                  resultsDiv.style.display = "block";
+
+                  // Reset all checklist items
+                  const allChecks = resultsDiv.querySelectorAll("li");
+                  allChecks.forEach(item => item.classList.remove("checked"));
+
+
+                  if (match_dm) {
+
+                            lat = parseFloat(match_dm[1]);
+                            lon = parseFloat(match_dm[3]);
+                            console.log("GPS DM: Lat/Long" + lat + " " + lon);
+
+                            toggleCheck("latDegrees", true);
+                            toggleCheck("lonDegrees", true);
+                            toggleCheck("latRange", !isNaN(lat) && lat >= -90 && lat <= 90);
+                            toggleCheck("lonRange", !isNaN(lon) && lon >= -180 && lon <= 180);
+
+                            if (match_dm[2] === ",") {
+                                      toggleCheck("delimiter", true); 
+
+                                    }
+
+                            // Plot on map
+                            const mapDiv = document.getElementById("map");
+                            mapDiv.innerHTML = ""; // 🔄 Clear previous map
+                            if (!(lat == -1) && ! (lon == -1) && allCriteriaChecked()  ) {
+                                      const mapFrame = document.createElement("iframe");
+                                      mapFrame.width = "100%";
+                                      mapFrame.height = "400";
+                                      mapFrame.style.border = "0";
+                                      mapFrame.loading = "lazy";
+                                      mapFrame.allowFullscreen = true;
+                                      mapFrame.referrerPolicy = "no-referrer-when-downgrade";
+                                      mapFrame.src = `https://www.google.com/maps?q=${lat},${lon}&output=embed`;
+                                      mapDiv.appendChild(mapFrame);
+                                    }
+
+
+                          }
+                }
+
+        function updateCriteriaDDM() {
+                  const container = document.getElementById('results');
+
+                  if (!container) {
+                            console.error("Element with id 'results' not found.");
+                            return;
+                          }
+
+                  container.innerHTML = `
+         <h2>Found Degree Decimal Minute Format</h2>
+         <h3>Latitude Checks</h3>
+         <ul id="latCriteria">
+         <li id="latDegrees">Degrees provided</li>
+         <li id="latDegree">Degree symbol provided</li>
+         <li id="latMinutes">Minutes provided</li>
+         <li id="latHemisphere">Hemisphere provided</li>
+         <li id="latRange">Latitude in valid range (0 to 90)</li>
+         </ul>
+         <h3>Longitude Checks</h3>
+         <ul id="lonCriteria">
+         <li id="lonDegrees">Degrees provided</li>
+         <li id="lonDegree">Degree symbol provided</li>
+         <li id="lonMinutes">Minutes provided</li>
+         <li id="lonHemisphere">Hemisphere provided</li>
+         <li id="lonRange">Longitude in valid range (0 to 180)</li>
+         </ul>
+         <h3>Delimiter Check</h3>
+         <ul id="delCriteria">
+         <li id="delimiter">Space delimiter between Latitude and Longitude</li>
+         </ul>
+
+       `;
+
+         }
+
+        function checkFormatDDM() {
+                  const input = document.getElementById("gpsInput").value.trim();
+                  const delimiter = /[NS]\s+(\d+)°/;
+                  const gpsDel = /(\d+)°(?:\s+)?(\d+\.\d+)(?:\s)?([NS])(?:\s)?(\d+)°(?:\s+)?(\d+.\d+)(?:\s)?([E|W])/;
+                  const match = input.match(gpsDel);
+
+                  lat=-1;
+                  lon=-1;
+                  if (match) {
+                            console.log("Matched GPS extraction");
+                            lat = parseFloat(match[1])+parseFloat(match[2])/60; // Group 1: degrees
+                            lon = parseFloat(match[4])+parseFloat(match[5])/60; // Group 2: decimal minutesa
+
+                            latHem = match[3];
+                            if (latHem === 'S') {
+                                      lat = -1.0*lat;
+                                    }
+                            lonHem = match[6];
+                            if (lonHem === 'W') {
+                                      lon = -1.0*lon;
+                                    }
+                            console.log("Latitude degrees:", lat);
+                            console.log("Latitude decimal minutes:", lon);
+
+
+
+                          } else {
+                                    console.log("Input does not match expected format.");
+                   }
+
+
+                  const parts = input.match(delimiter);
+
+                  // Show criteria section
+                  const resultsDiv = document.getElementById("results");
+                  resultsDiv.style.display = "block";
+
+                  // Reset all checklist items
+                  const allChecks = resultsDiv.querySelectorAll("li");
+                  allChecks.forEach(item => item.classList.remove("checked"));
+
+                  // Format checks (for illustrative purposes)
+                  const degreeSymbolLat = /(\d+)°.*[NS]/;
+                  const degreeSymbolLon = /[NS](?:\s+)?(\d+)°/;
+                  const degreesProvided = /(\d+)(?=°).*?(\d+)(?=°)/;
+                  const LatminutesProvided = /(\d+.\d+)(?:\s+)?[NS]/;
+                  const LonminutesProvided = /(\d+.\d+)(?:\s+)?[EW]/;
+                  const hemisphereLat = /[NS]/;
+                  const hemisphereLon = /[EW]/;
+
+                  toggleCheck("latDegree", degreeSymbolLat.test(input));
+                  toggleCheck("latMinutes", LatminutesProvided.test(input));
+                  toggleCheck("latHemisphere", hemisphereLat.test(input));
+
+                  toggleCheck("lonDegree", degreeSymbolLon.test(input));
+                  toggleCheck("lonMinutes", LonminutesProvided.test(input));
+                  toggleCheck("lonHemisphere", hemisphereLon.test(input));
+
+                  toggleCheck("delimiter", parts);
+
+                  // Check if degres in Lat and Lon provided 
+                  match_degrees = input.match(degreesProvided);
+
+                  if (match_degrees) {
+                            console.log("match_degrees[1]: " + match_degrees[1]);
+                            console.log("match_degrees[2]: " + match_degrees[2]);
+                          }
+                  if (match_degrees) {
+                            if (match_degrees[1].length > 0 ) {
+                                      console.log("Toggle latDegrees"); 
+                                      toggleCheck("latDegrees", true);
+                                    }
+
+                            if (match_degrees[2].length > 0) {
+                                      console.log("Toggle lonDegrees");
+                                      toggleCheck("lonDegrees", true);
+                                    }
+                          }
+
+                  // Range checks
+                  toggleCheck("latRange", !isNaN(lat) && lat >= -90 && lat <= 90);
+                  toggleCheck("lonRange", !isNaN(lon) && lon >= -180 && lon <= 180);
+
+                  // Plot on map
+                  const mapDiv = document.getElementById("map");
+                  mapDiv.innerHTML = ""; // 🔄 Clear previous map
+                  if (!(lat == -1) && ! (lon == -1) && allCriteriaChecked()  ) {
+                            const mapFrame = document.createElement("iframe");
+                            mapFrame.width = "100%";
+                            mapFrame.height = "400";
+                            mapFrame.style.border = "0";
+                            mapFrame.loading = "lazy";
+                            mapFrame.allowFullscreen = true;
+                            mapFrame.referrerPolicy = "no-referrer-when-downgrade";
+                            mapFrame.src = `https://www.google.com/maps?q=${lat},${lon}&output=embed`;
+                            mapDiv.appendChild(mapFrame);
+                          }
+                }
+
+
+        function toggleCheck(id, condition) {
+                  const element = document.getElementById(id);
+                  if (condition) {
+                            element.classList.add("checked");
+                          } else {
+                                    element.classList.remove("checked");
+                                  }
+                }
+
+        function resetChecks() {
+                  toggleCheck("latDegree", false);
+                  toggleCheck("latMinutes", false);
+                  toggleCheck("latHemisphere", false);
+
+                  toggleCheck("lonDegree", false);
+                  toggleCheck("lonMinutes", false);
+                  toggleCheck("lonHemisphere", false);
+
+                  toggleCheck("delimiter", false);
+
+                  // Range checks
+                  toggleCheck("latRange", false);
+                  toggleCheck("lonRange", false);
+                }
+
+
+        function allCriteriaChecked() {
+                  const latItems = document.querySelectorAll('#latCriteria li');
+                  const lonItems = document.querySelectorAll('#lonCriteria li');
+                  //const delItems  = document.querySelectorAll9('#delCriteria li');
+                  const allItems = [...latItems, ...lonItems];
+                  const delimiter = document.getElementById("delimiter");
+                  console.log("delimiter is set to " + delimiter.classList);
+                  if (delimiter.classList.contains('checked')) {
+                          retval =  allItems.every(item => item.classList.contains('checked'));
+                          } else {
+                                    retval = false;
+                                  }
+                  return retval;
+                }
+
+      </script>
