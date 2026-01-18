@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <style>
+      body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; text-align: center; background-color: #f8f9fa; color: #333; }
+      .container { max-width: 500px; margin: 0 auto; border: 1px solid #ddd; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); background: white; }
+      
+      h3 { margin-top: 0; margin-bottom: 25px; font-size: 20px; line-height: 1.4; color: #1a73e8; }
+      
+      .input-group { margin-bottom: 20px; }
+      input[type="text"] { width: 85%; padding: 12px; border: 2px solid #dfe1e5; border-radius: 8px; text-transform: uppercase; font-size: 18px; text-align: center; transition: border 0.3s; }
+      input[type="text"]:focus { border-color: #1a73e8; outline: none; }
+      
+      button { background-color: #1a73e8; color: white; border: none; padding: 14px 28px; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 600; width: 90%; transition: background 0.3s; }
+      button:hover { background-color: #1557b0; }
+      button:disabled { background-color: #ccc; cursor: not-allowed; }
+      
+      /* Status/Progress Area */
+      #statusArea { margin-top: 30px; text-align: left; border-top: 1px solid #eee; padding-top: 20px; display: none; }
+      .step { margin: 12px 0; font-size: 16px; display: flex; align-items: center; min-height: 30px; }
+      .check { color: #188038; font-weight: bold; margin-right: 12px; font-size: 20px; }
+      .error-msg { color: #d93025; background: #fce8e6; padding: 15px; border-radius: 8px; text-align: center; font-weight: 500; margin-top: 10px; }
+      
+      /* Spinner Animation */
+      .loader { border: 3px solid #f3f3f3; border-top: 3px solid #3498db; border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; margin-right: 12px; }
+      @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+      
+      .done-text { font-weight: bold; color: #1a73e8; font-size: 22px; display: block; margin-top: 15px; text-align: center; }
+      .download-link { display: block; margin: 15px auto 0; padding: 12px; background: #188038; color: white; text-decoration: none; border-radius: 8px; text-align: center; font-weight: bold; }
+      .download-link:hover { background: #13652c; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Please enter the callsign for the award download</h3>
+      
+      <form id="awardForm">
+        <div class="input-group">
+          <input type="text" name="callsign" id="callsign" placeholder="ENTER CALLSIGN" required autocomplete="off">
+        </div>
+        <button type="submit" id="submitBtn">Generate Award</button>
+      </form>
+
+      <div id="statusArea">
+        <div id="step1" class="step"></div>
+        <div id="step2" class="step"></div>
+        <div id="step3" class="step"></div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('awardForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const callsign = document.getElementById('callsign').value.toUpperCase().trim();
+        const statusArea = document.getElementById('statusArea');
+        const s1 = document.getElementById('step1');
+        const s2 = document.getElementById('step2');
+        const s3 = document.getElementById('step3');
+        const btn = document.getElementById('submitBtn');
+
+        // Initial UI State
+        statusArea.style.display = 'block';
+        btn.disabled = true;
+        s1.innerHTML = '<div class="loader"></div> Checking eligibility...';
+        s2.innerHTML = '';
+        s3.innerHTML = '';
+
+        // STEP 1: Verify via Apps Script
+        google.script.run.withSuccessHandler(function(vResponse) {
+          if (vResponse.success) {
+            s1.innerHTML = '<span class="check">✓</span> <span style="color:#188038">Verified callsign eligible for award.</span>';
+            
+            // STEP 2: Generate PDF via Apps Script
+            s2.innerHTML = '<div class="loader"></div> Please stand-by... Generating your award PDF';
+            
+            google.script.run.withSuccessHandler(function(gResponse) {
+              if (gResponse.success) {
+                s2.innerHTML = '<span class="check">✓</span> PDF Generated successfully.';
+                s3.innerHTML = `
+                  <span class="done-text">Done!</span>
+                  <a href="${gResponse.downloadUrl}" class="download-link" target="_blank">Download Your Award PDF</a>
+                `;
+              } else {
+                s2.innerHTML = '<div class="error-msg">' + gResponse.message + '</div>';
+              }
+              btn.disabled = false;
+            }).generateAward(callsign);
+
+          } else {
+            // Failure Case
+            s1.innerHTML = '';
+            s2.innerHTML = '';
+            s3.innerHTML = '<div class="error-msg">' + vResponse.message + '</div>';
+            btn.disabled = false;
+          }
+        }).verifyCallsign(callsign);
+      });
+    </script>
+  </body>
+</html>
