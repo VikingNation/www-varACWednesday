@@ -3,30 +3,81 @@
   <head>
     <base target="_top">
     <style>
-      body { font-family: 'Segoe UI', sans-serif; padding: 40px; text-align: center; background-color: #f8f9fa; }
-      .container { max-width: 500px; margin: 0 auto; border: 1px solid #ddd; padding: 30px; border-radius: 12px; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-      h3 { color: #1a73e8; margin-bottom: 25px; }
-      .input-group { margin-bottom: 15px; text-align: left; }
-      label { display: block; margin-bottom: 5px; font-weight: bold; color: #555; }
-      input[type="text"], select { width: 100%; padding: 12px; border: 2px solid #dfe1e5; border-radius: 8px; font-size: 16px; box-sizing: border-box; }
-      button { background-color: #1a73e8; color: white; border: none; padding: 14px; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 600; width: 100%; margin-top: 10px; }
-      button:disabled { background-color: #ccc; }
+      body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; text-align: center; background-color: #f8f9fa; color: #333; }
+      .container { max-width: 500px; margin: 0 auto; border: 1px solid #ddd; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); background: white; }
+      
+      h3 { margin-top: 0; margin-bottom: 25px; font-size: 22px; color: #1a73e8; }
+      
+      .input-group { margin-bottom: 20px; text-align: left; }
+      label { display: block; margin-bottom: 8px; font-weight: bold; color: #555; }
+      
+      input[type="text"], select { 
+        width: 100%; 
+        padding: 12px; 
+        border: 2px solid #dfe1e5; 
+        border-radius: 8px; 
+        font-size: 16px; 
+        box-sizing: border-box;
+        transition: border-color 0.3s;
+      }
+      
+      input[type="text"]:focus, select:focus { border-color: #1a73e8; outline: none; }
+      input[type="text"] { text-transform: uppercase; }
+
+      button { 
+        background-color: #1a73e8; 
+        color: white; 
+        border: none; 
+        padding: 14px; 
+        border-radius: 8px; 
+        cursor: pointer; 
+        font-size: 16px; 
+        font-weight: 600; 
+        width: 100%; 
+        margin-top: 10px; 
+        transition: background 0.3s; 
+      }
+      button:hover { background-color: #1557b0; }
+      button:disabled { background-color: #ccc; cursor: not-allowed; }
+      
+      /* Status/Progress Area */
       #statusArea { margin-top: 30px; text-align: left; border-top: 1px solid #eee; padding-top: 20px; display: none; }
-      .step { margin: 12px 0; display: flex; align-items: center; font-size: 15px; }
-      .check { color: #188038; font-weight: bold; margin-right: 12px; }
-      .loader { border: 3px solid #f3f3f3; border-top: 3px solid #3498db; border-radius: 50%; width: 18px; height: 18px; animation: spin 1s linear infinite; margin-right: 12px; }
+      .step { margin: 12px 0; font-size: 16px; display: flex; align-items: center; min-height: 30px; }
+      .check { color: #188038; font-weight: bold; margin-right: 12px; font-size: 20px; }
+      
+      .error-msg { color: #d93025; background: #fce8e6; padding: 15px; border-radius: 8px; text-align: center; font-weight: 500; margin-top: 10px; }
+      
+      /* Spinner Animation */
+      .loader { border: 3px solid #f3f3f3; border-top: 3px solid #3498db; border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; margin-right: 12px; }
       @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-      .error-msg { color: #d93025; background: #fce8e6; padding: 15px; border-radius: 8px; margin-top: 10px; }
-      .download-link { display: block; margin-top: 15px; padding: 12px; background: #188038; color: white; text-decoration: none; border-radius: 8px; text-align: center; font-weight: bold; }
+      
+      /* Result Area Styles */
+      .done-text { font-weight: bold; color: #1a73e8; font-size: 24px; display: block; margin-bottom: 15px; text-align: center; }
+      
+      .download-link { 
+        display: block; 
+        margin: 10px auto 0; 
+        padding: 14px; 
+        background: #188038; 
+        color: white; 
+        text-decoration: none; 
+        border-radius: 8px; 
+        text-align: center; 
+        font-weight: bold; 
+        width: 80%;
+        transition: background 0.3s;
+      }
+      .download-link:hover { background: #13652c; }
     </style>
   </head>
   <body>
     <div class="container">
-      <h3>VarAC Wednesday Award Download Portal</h3>
+      <h3>VarAC Wednesday Award Portal</h3>
+      
       <form id="awardForm">
         <div class="input-group">
           <label>Please enter the callsign:</label>
-          <input type="text" id="callsign" placeholder="e.g. W1AW" required>
+          <input type="text" id="callsign" placeholder="e.g. W1AW" required autocomplete="off">
         </div>
         
         <div class="input-group">
@@ -54,33 +105,49 @@
         e.preventDefault();
         const callsign = document.getElementById('callsign').value.toUpperCase().trim();
         const awardName = document.getElementById('awardName').value;
+        const statusArea = document.getElementById('statusArea');
         const s1 = document.getElementById('step1');
         const s2 = document.getElementById('step2');
         const s3 = document.getElementById('step3');
         const btn = document.getElementById('submitBtn');
 
-        document.getElementById('statusArea').style.display = 'block';
+        // Initial UI State
+        statusArea.style.display = 'block';
         btn.disabled = true;
         s1.innerHTML = '<div class="loader"></div> Verifying eligibility...';
-        s2.innerHTML = ''; s3.innerHTML = '';
+        s2.innerHTML = '';
+        s3.innerHTML = '';
 
-        google.script.run.withSuccessHandler(function(vRes) {
-          if (vRes.success) {
+        // STEP 1: Verify via Apps Script
+        google.script.run.withSuccessHandler(function(vResponse) {
+          if (vResponse.success) {
             s1.innerHTML = '<span class="check">✓</span> <span style="color:#188038">Verified eligible for ' + awardName + '.</span>';
-            s2.innerHTML = '<div class="loader"></div> Generating your award PDF...';
             
-            google.script.run.withSuccessHandler(function(gRes) {
-              if (gRes.success) {
-                s2.innerHTML = '<span class="check">✓</span> <span style="color:#188038">PDF Generated successfully. </span>';
-                s3.innerHTML = '<span style="font-weight:bold; color:#1a73e8; display:block; text-align:center; margin-top:10px;">Done!</span><br/><a href="' + gRes.downloadUrl + '" class="download-link" target="_blank">Download Your Award PDF</a>';
+            // STEP 2: Generate PDF via Apps Script
+            s2.innerHTML = '<div class="loader"></div> Please stand-by... Generating your award PDF';
+            
+            google.script.run.withSuccessHandler(function(gResponse) {
+              if (gResponse.success) {
+                s2.innerHTML = '<span class="check">✓</span> <span style="color:#188038">PDF Generated successfully.</span>';
+                
+                // STEP 3: Success Message and Stacked Download Link
+                s3.innerHTML = `
+                  <div style="text-align:center; margin-top:20px; border-top: 1px dashed #ccc; padding-top: 20px;">
+                    <span class="done-text">Done!</span>
+                    <a href="${gResponse.downloadUrl}" class="download-link" target="_blank">Download Your Award PDF</a>
+                  </div>
+                `;
               } else {
-                s2.innerHTML = '<div class="error-msg">' + gRes.message + '</div>';
+                s2.innerHTML = '<div class="error-msg">' + gResponse.message + '</div>';
               }
               btn.disabled = false;
             }).generateAward(callsign, awardName);
+
           } else {
+            // Failure Case
             s1.innerHTML = '';
-            s3.innerHTML = '<div class="error-msg">' + vRes.message + '</div>';
+            s2.innerHTML = '';
+            s3.innerHTML = '<div class="error-msg">' + vResponse.message + '</div>';
             btn.disabled = false;
           }
         }).verifyCallsign(callsign, awardName);
