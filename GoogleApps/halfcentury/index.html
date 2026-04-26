@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 20px;
+        line-height: 1.5;
+      }
+
+      h3 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .search-box {
+        margin-bottom: 20px;
+        background: #f4f4f4;
+        padding: 15px;
+        border-radius: 8px;
+      }
+
+      input {
+        padding: 10px;
+        width: 250px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        text-transform: uppercase;
+        font-size: 16px;
+      }
+
+      button {
+        padding: 10px 18px;
+        background: #4A90E2;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      button:hover {
+        background: #357ABD;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th {
+        background-color: #4A90E2;
+        color: white;
+        text-align: left;
+        padding: 12px;
+        font-size: 16px;
+      }
+
+      td {
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+        font-size: 15px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      .msg-box {
+        padding: 20px;
+        border-radius: 4px;
+        margin-top: 20px;
+        font-weight: bold;
+      }
+
+      .no-results {
+        background-color: #fff3cd;
+        color: #856404;
+        border: 1px solid #ffeeba;
+      }
+
+      .error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+
+      /* 📱 MOBILE OPTIMIZATION */
+      @media (max-width: 600px) {
+        body {
+          margin: 10px;
+        }
+
+        .search-box {
+          padding: 12px;
+        }
+
+        input {
+          width: 100%;
+          margin-bottom: 10px;
+          font-size: 18px;
+        }
+
+        button {
+          width: 100%;
+          font-size: 18px;
+        }
+
+        table, thead, tbody, th, td, tr {
+          display: block;
+        }
+
+        thead {
+          display: none;
+        }
+
+        tr {
+          margin-bottom: 12px;
+          border: 1px solid #ddd;
+          border-radius: 6px;
+          padding: 10px;
+          background: white;
+        }
+
+        td {
+          display: flex;
+          justify-content: space-between;
+          padding: 8px 5px;
+          font-size: 16px;
+        }
+
+        td::before {
+          content: attr(data-label);
+          font-weight: bold;
+          color: #333;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <h3>VarAC Wednesday Checkin Lookup</h3>
+
+    <div class="search-box">
+      <label for="callsignInput"><strong>Callsign:</strong></label><br>
+      <input type="text" id="callsignInput" placeholder="Enter Callsign...">
+      <button onclick="performSearch()">Search</button>
+    </div>
+
+    <div id="status"></div>
+    <div id="output"></div>
+
+    <script>
+      document.getElementById("callsignInput").addEventListener("keypress", function(e) {
+        if (e.key === "Enter") performSearch();
+      });
+
+      function performSearch() {
+        const val = document.getElementById('callsignInput').value.trim();
+        const statusDiv = document.getElementById('status');
+        const outputDiv = document.getElementById('output');
+
+        if (!val) {
+          statusDiv.innerHTML = "Please enter a callsign.";
+          return;
+        }
+
+        statusDiv.innerHTML = "Searching for " + val + "...";
+        outputDiv.innerHTML = "";
+
+        google.script.run
+          .withSuccessHandler(function(response) {
+            statusDiv.innerHTML = "";
+
+            if (!response) {
+              outputDiv.innerHTML = '<div class="msg-box error">Error: Server returned null.</div>';
+              return;
+            }
+
+            if (response.noResults) {
+              outputDiv.innerHTML =
+                '<div class="msg-box no-results">Operator ' +
+                response.callsign +
+                ' has not checked into VarAC Wednesday</div>';
+              return;
+            }
+
+            if (response.error) {
+              outputDiv.innerHTML = '<div class="msg-box error">' + response.error + '</div>';
+              return;
+            }
+
+            // Build responsive table
+            let html = '<table><thead><tr>';
+            response.headers.forEach(h => html += '<th>' + h + '</th>');
+            html += '</tr></thead><tbody>';
+
+            response.rows.forEach(row => {
+              html += '<tr>';
+              row.forEach((cell, i) => {
+                html += '<td data-label="' + response.headers[i] + '">' + cell + '</td>';
+              });
+              html += '</tr>';
+            });
+
+            html += '</tbody></table>';
+            outputDiv.innerHTML = html;
+          })
+          .withFailureHandler(function(err) {
+            outputDiv.innerHTML = '<div class="msg-box error">System Failure: ' + err.message + '</div>';
+          })
+          .searchSpreadsheet(val);
+      }
+    </script>
+
+  </body>
+</html>
+
