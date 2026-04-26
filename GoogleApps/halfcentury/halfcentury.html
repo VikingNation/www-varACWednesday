@@ -139,16 +139,13 @@
           color: #333;
         }
       }
+
     </style>
   </head>
 
   <body>
 
     <h3>VarAC Wednesday – Half‑Century Award Winners</h3>
-
-    <div class="search-box">
-      <button onclick="window.location='?mode=search'">Back to Callsign Search</button>
-    </div>
 
     <div id="status">Loading award winners...</div>
     <div id="output"></div>
@@ -176,7 +173,7 @@
           }
 
           let html = '<table><thead><tr>';
-          html += '<th>Week #</th><th>Date Achieved</th><th>Callsign</th>';
+          html += '<th>Earned In Week #</th><th>Date Achieved</th><th>Callsign</th>';
           html += '</tr></thead><tbody>';
 
           response.winners.forEach(row => {
@@ -199,4 +196,3 @@
 
   </body>
 </html>
-
